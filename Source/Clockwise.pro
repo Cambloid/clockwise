@@ -26,10 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        MainWindow/mainwindow.cpp
+        MainWindow/mainwindow.cpp \
+        FeatureDetection/CornerHarrisDetector.cpp \
+        Image/ImageContainer.cpp \
+        Image/ImageLoader.cpp
 
 HEADERS += \
-        MainWindow/mainwindow.h
+        MainWindow/mainwindow.h \
+        FeatureDetection/CornerHarrisDetector.h \
+        Image/ImageContainer.h \
+        Image/ImageLoader.h
 
 FORMS += \
         MainWindow/mainwindow.ui
