@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "Image/ImageLoader.h"
+#include "Image/ImageContainer.h"
+
 #include <QMainWindow>
 #include <QDebug>
 #include <QGraphicsScene>
@@ -30,8 +33,8 @@ private:
     Ui::MainWindow *ui;
 
 private:
-    QString pickImage();
-    void presentImage(QString imageFile);
+    QStringList pickImage();
+    void presentImage(QPixmap pixmap);
 
 private slots: // Events
     void btnLoadImage_clicked();

@@ -18,25 +18,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::presentImage(QPixmap pixmap) {
+    ///std::cout << "Present image:" << imageFile.toStdString() << std::endl;
 
-
-
-// Private Methods
-QString MainWindow::pickImage()
-{
-    return QFileDialog::getOpenFileName(this, tr("Open File"), "/home", tr("Images (*.png *.xpm *.jpg)"));
-}
-
-void MainWindow::presentImage(QString imageFile) {
-    std::cout << "Present image:" << imageFile.toStdString() << std::endl;
-    QPixmap bkgnd(imageFile);
-
-    if(bkgnd.isNull()) {
+    if(pixmap.isNull()) {
         std::cout << "Pixmap is null" << std::endl;
     }
 
-    ui->label->setPixmap(bkgnd);
+    ui->label->setPixmap(pixmap);
 }
+
 
 //Event Handlers
 void MainWindow::btnDetectFeatures_clicked() {
@@ -44,6 +35,12 @@ void MainWindow::btnDetectFeatures_clicked() {
 }
 
 void MainWindow::btnLoadImage_clicked() {
-    this->presentImage(this->pickImage());
-    std::cout << "btnLoadImage_clicked" << std::endl;
+
+    ImageLoader loader;
+    ImageContainer imgContainer(loader.PickImage());
+    imgContainer.LoadAll();
+
+    // Load and present image
+    //this->presentImage(imgContainer.getOCV_MatList().first());
+
 }
