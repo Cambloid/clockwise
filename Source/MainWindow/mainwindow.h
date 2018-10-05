@@ -3,6 +3,10 @@
 
 #include "Image/ImageLoader.h"
 #include "Image/ImageContainer.h"
+#include "FeatureDetection/ShiTomasiDetector.h"
+#include "FeatureDetection/CornerHarrisDetector.h"
+
+#include "Image/ImageConverter.hpp"
 
 #include <QMainWindow>
 #include <QDebug>
@@ -13,6 +17,7 @@
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QFileDialog>
+
 
 #include <iostream>
 #include <string>
@@ -31,14 +36,19 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    ImageContainer imgContainer;
 
 private:
     QStringList pickImage();
-    void presentImage(QPixmap pixmap);
+    void presentImage();
 
 private slots: // Events
     void btnLoadImage_clicked();
     void btnDetectFeatures_clicked();
+    void sldCurrentImage_ValueChanged();
+
+protected:
+    void resizeEvent(QResizeEvent* event) override;
 
 };
 

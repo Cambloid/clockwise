@@ -35,7 +35,7 @@ public: // Konstruktor
 public:
     int getThreshold();
     void setThreshold(int threshold);
-    void startDetection(ImageContainer &imageContainer);
+    ImageContainer StartDetection(ImageContainer &imageContainer);
 
 };
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>667</width>
-    <height>300</height>
+    <height>448</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="lblImage">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -29,9 +29,23 @@
      </widget>
     </item>
     <item>
+     <widget class="QSlider" name="sldCurrentImage">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="btnLoadImage">
       <property name="text">
        <string>Load image</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnSettings">
+      <property name="text">
+       <string>Settings</string>
       </property>
      </widget>
     </item>
@@ -50,7 +64,7 @@
      <x>0</x>
      <y>0</y>
      <width>667</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

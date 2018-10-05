@@ -18,12 +18,16 @@ private:
     QList<cv::Mat> ocv_MatList;
 
 public:
+    ImageContainer();
+    ImageContainer(QList<cv::Mat> *imageCollection);
     ImageContainer(QStringList fileCollection);
     ~ImageContainer();
 
     void LoadAll();
 
     QList<cv::Mat> getOCV_MatList();
+
+
 
 };
 

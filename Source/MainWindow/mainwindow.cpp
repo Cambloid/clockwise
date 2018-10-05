@@ -7,9 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Fix to resize MainWindow smaller
+    ui->lblImage->setMinimumSize(1, 1);
+
     // Register Events
-    this->connect(ui->btnLoadImage,      SIGNAL(clicked()), this, SLOT(btnLoadImage_clicked()));
-    this->connect(ui->btnDetectFeatures, SIGNAL(clicked()), this, SLOT(btnDetectFeatures_clicked()));
+    this->connect(ui->btnLoadImage,      SIGNAL(clicked()),         this, SLOT(btnLoadImage_clicked()));
+    this->connect(ui->btnDetectFeatures, SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
+    this->connect(ui->sldCurrentImage,   SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_ValueChanged()));
 
 }
 
@@ -18,29 +22,48 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::presentImage(QPixmap pixmap) {
-    ///std::cout << "Present image:" << imageFile.toStdString() << std::endl;
 
-    if(pixmap.isNull()) {
-        std::cout << "Pixmap is null" << std::endl;
+void MainWindow::presentImage() {
+    int currIdx = ui->sldCurrentImage->value();
+
+    if(imgContainer.getOCV_MatList().count() <= 0) {
+        return;
     }
 
-    ui->label->setPixmap(pixmap);
+    cv::Mat currImage = imgContainer.getOCV_MatList().at(currIdx);
+    QPixmap pixmapImg = ImageConverter::ToQPixmap(currImage);
+
+    ui->lblImage->setPixmap(pixmapImg.scaled(ui->lblImage->width(), ui->lblImage->height(), Qt::KeepAspectRatio));
 }
 
 
 //Event Handlers
 void MainWindow::btnDetectFeatures_clicked() {
     std::cout << "btnDetectFeatures_clicked" << std::endl;
+
+    ShiTomasiDetector detector;
+    this->imgContainer = detector.StartDetection(this->imgContainer);
 }
 
 void MainWindow::btnLoadImage_clicked() {
 
     ImageLoader loader;
     ImageContainer imgContainer(loader.PickImage());
+
     imgContainer.LoadAll();
 
-    // Load and present image
-    //this->presentImage(imgContainer.getOCV_MatList().first());
+    this->imgContainer = imgContainer;
+    ui->sldCurrentImage->setRange(0, imgContainer.getOCV_MatList().count() - 1);
 
+    this->presentImage();
+}
+
+void MainWindow::sldCurrentImage_ValueChanged() {
+    this->presentImage();
+}
+
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    this->presentImage();
 }

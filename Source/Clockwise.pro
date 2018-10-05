@@ -28,14 +28,20 @@ SOURCES += \
         main.cpp \
         MainWindow/mainwindow.cpp \
         FeatureDetection/CornerHarrisDetector.cpp \
+        FeatureDetection/ShiTomasiDetector.cpp \
+        FeatureDetection/SIFTDetector.cpp \
         Image/ImageContainer.cpp \
-        Image/ImageLoader.cpp
+        Image/ImageLoader.cpp \
+        Image/ImageConverter.hpp
 
 HEADERS += \
         MainWindow/mainwindow.h \
         FeatureDetection/CornerHarrisDetector.h \
+        FeatureDetection/ShiTomasiDetector.h \
+        FeatureDetection/SIFTDetector.h \
         Image/ImageContainer.h \
         Image/ImageLoader.h
+
 
 FORMS += \
         MainWindow/mainwindow.ui
