@@ -5,14 +5,16 @@
 #include <QFileDialog>
 #include <QDialog>
 
-class ImageLoader {
+#include <opencv2/core.hpp>
+#include <opencv2/opencv.hpp>
 
+class ImageLoader {
 public:
     ImageLoader();
     ~ImageLoader();
 
     QStringList PickImage();
-
+    QList<cv::Mat> BulkLoadImage(QStringList &imageList);
 };
 
 #endif

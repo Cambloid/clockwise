@@ -11,6 +11,8 @@
 
 #include <iostream>
 
+#include "Image/ImageLoader.h"
+
 class ImageContainer {
 
 private:
@@ -26,9 +28,6 @@ public:
     void LoadAll();
 
     QList<cv::Mat> getOCV_MatList();
-
-
-
 };
 
 

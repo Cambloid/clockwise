@@ -21,13 +21,13 @@ QList<cv::Mat> ImageContainer::getOCV_MatList() {
 }
 
 void ImageContainer::LoadAll() {
+
     if(this->fileCollection.isEmpty()) {
         std::cout << "Container is empty" << std::endl;
         return;
     }
-    foreach(QString str, this->fileCollection) {
-       this->ocv_MatList.append(cv::imread(str.toStdString(), cv::IMREAD_COLOR ));
-    }
 
+    ImageLoader loader;
+    this->ocv_MatList = loader.BulkLoadImage(this->fileCollection);
 }
 

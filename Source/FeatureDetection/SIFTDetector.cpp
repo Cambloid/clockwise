@@ -7,5 +7,5 @@ SIFTDetector::SIFTDetector()
 
 ImageContainer SIFTDetector::StartDetecion(ImageContainer &imageContainer)
 {
-
+    return ImageContainer();
 }

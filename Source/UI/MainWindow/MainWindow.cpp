@@ -1,6 +1,9 @@
-#include "mainwindow.h"
+#include "UI/MainWindow/MainWindow.h"
 #include "ui_mainwindow.h"
 
+/*!
+
+*/
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -13,16 +16,22 @@ MainWindow::MainWindow(QWidget *parent) :
     // Register Events
     this->connect(ui->btnLoadImage,      SIGNAL(clicked()),         this, SLOT(btnLoadImage_clicked()));
     this->connect(ui->btnDetectFeatures, SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
-    this->connect(ui->sldCurrentImage,   SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_ValueChanged()));
+    this->connect(ui->btnSettings,       SIGNAL(clicked()),         this, SLOT(btnSettings_clicked()));
+    this->connect(ui->sldCurrentImage,   SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
 
 }
 
+/*!
+
+*/
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+/*!
 
+*/
 void MainWindow::presentImage() {
     int currIdx = ui->sldCurrentImage->value();
 
@@ -37,14 +46,21 @@ void MainWindow::presentImage() {
 }
 
 
-//Event Handlers
+/*!
+Event Handlers
+*/
 void MainWindow::btnDetectFeatures_clicked() {
     std::cout << "btnDetectFeatures_clicked" << std::endl;
 
     ShiTomasiDetector detector;
     this->imgContainer = detector.StartDetection(this->imgContainer);
+
+    this->presentImage();
 }
 
+/*!
+
+*/
 void MainWindow::btnLoadImage_clicked() {
 
     ImageLoader loader;
@@ -58,12 +74,24 @@ void MainWindow::btnLoadImage_clicked() {
     this->presentImage();
 }
 
-void MainWindow::sldCurrentImage_ValueChanged() {
+/*!
+
+*/
+void MainWindow::sldCurrentImage_valueChanged() {
     this->presentImage();
 }
 
+/*!
 
-void MainWindow::resizeEvent(QResizeEvent *event)
-{
+*/
+void MainWindow::btnSettings_clicked() {
+    SettingsWindow settingsWindow(this->settings);
+    settingsWindow.exec();
+}
+
+/*!
+
+*/
+void MainWindow::resizeEvent(QResizeEvent *event) {
     this->presentImage();
 }

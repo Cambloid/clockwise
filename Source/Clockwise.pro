@@ -25,26 +25,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        MainWindow/mainwindow.cpp \
+        UI/MainWindow/MainWindow.cpp \
+        UI/SettingsWindow/SettingsWindow.cpp \
+        UI/SettingsWindow/SettingsData.cpp \
         FeatureDetection/CornerHarrisDetector.cpp \
         FeatureDetection/ShiTomasiDetector.cpp \
         FeatureDetection/SIFTDetector.cpp \
         Image/ImageContainer.cpp \
         Image/ImageLoader.cpp \
-        Image/ImageConverter.hpp
+        Image/ImageConverter.hpp \
+        Main.cpp
 
 HEADERS += \
-        MainWindow/mainwindow.h \
+        UI/MainWindow/MainWindow.h \
+        UI/SettingsWindow/SettingsWindow.h \
+        UI/SettingsWindow/SettingsData.h \
         FeatureDetection/CornerHarrisDetector.h \
         FeatureDetection/ShiTomasiDetector.h \
         FeatureDetection/SIFTDetector.h \
         Image/ImageContainer.h \
         Image/ImageLoader.h
 
-
 FORMS += \
-        MainWindow/mainwindow.ui
+        UI/MainWindow/MainWindow.ui \
+        UI/SettingsWindow/SettingsWindow.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
