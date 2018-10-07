@@ -31,6 +31,7 @@ SOURCES += \
         FeatureDetection/CornerHarrisDetector.cpp \
         FeatureDetection/ShiTomasiDetector.cpp \
         FeatureDetection/SIFTDetector.cpp \
+        FeatureDetection/DetectorManager.cpp \
         Image/ImageContainer.cpp \
         Image/ImageLoader.cpp \
         Image/ImageConverter.hpp \
@@ -43,6 +44,7 @@ HEADERS += \
         FeatureDetection/CornerHarrisDetector.h \
         FeatureDetection/ShiTomasiDetector.h \
         FeatureDetection/SIFTDetector.h \
+        FeatureDetection/DetectorManager.h \
         Image/ImageContainer.h \
         Image/ImageLoader.h
 

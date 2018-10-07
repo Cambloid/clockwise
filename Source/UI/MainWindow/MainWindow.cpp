@@ -52,7 +52,7 @@ Event Handlers
 void MainWindow::btnDetectFeatures_clicked() {
     std::cout << "btnDetectFeatures_clicked" << std::endl;
 
-    ShiTomasiDetector detector;
+    DetectorManager detector(this->settings);
     this->imgContainer = detector.StartDetection(this->imgContainer);
 
     this->presentImage();

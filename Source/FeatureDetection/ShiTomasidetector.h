@@ -15,10 +15,17 @@
 
 class ShiTomasiDetector
 {
+private:
+    int numFeatures = 1000;
+
 public:
     ShiTomasiDetector();
     ~ShiTomasiDetector();
     ImageContainer StartDetection(ImageContainer &imageContainer);
+
+
+    int getNumFeatures() const;
+    void setNumFeatures(int value);
 };
 
 #endif // SHITOMASIDETECTOR_H

@@ -5,8 +5,7 @@
 #include "Image/ImageContainer.h"
 #include "Image/ImageConverter.hpp"
 
-#include "FeatureDetection/ShiTomasiDetector.h"
-#include "FeatureDetection/CornerHarrisDetector.h"
+#include "FeatureDetection/DetectorManager.h"
 
 #include "UI/SettingsWindow/SettingsWindow.h"
 #include "UI/SettingsWindow/SettingsData.h"

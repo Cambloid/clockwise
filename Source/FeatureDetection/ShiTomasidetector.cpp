@@ -21,7 +21,7 @@ ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer)
 
         // Detecting corners
         std::vector<cv::Point2f> corners;
-        cv::goodFeaturesToTrack(imageGrey, corners, 1000, 0.01, 10);
+        cv::goodFeaturesToTrack(imageGrey, corners, this->numFeatures, 0.01, 10);
 
         /*
          Goal: Extract X Y Coordinate from mat
@@ -39,3 +39,14 @@ ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer)
 
     return ImageContainer(&newImage);
 };
+
+
+int ShiTomasiDetector::getNumFeatures() const
+{
+    return numFeatures;
+}
+
+void ShiTomasiDetector::setNumFeatures(int value)
+{
+    numFeatures = value;
+}
