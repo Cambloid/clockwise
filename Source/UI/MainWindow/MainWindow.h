@@ -8,7 +8,7 @@
 #include "FeatureDetection/DetectorManager.h"
 
 #include "UI/SettingsWindow/SettingsWindow.h"
-#include "UI/SettingsWindow/SettingsData.h"
+#include "DTO/SettingsBase.h"
 
 #include <QMainWindow>
 #include <QDebug>
@@ -42,7 +42,7 @@ public:
 private: // Private instancevariables
     Ui::MainWindow *ui;
     ImageContainer imgContainer;
-    SettingsData settings;
+    SettingsBase settings;
 
 private: // Private Methods
     QStringList pickImage();

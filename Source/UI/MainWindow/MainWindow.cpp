@@ -87,6 +87,10 @@ void MainWindow::sldCurrentImage_valueChanged() {
 void MainWindow::btnSettings_clicked() {
     SettingsWindow settingsWindow(this->settings);
     settingsWindow.exec();
+
+    if(settingsWindow.result() == QDialog::Accepted) {
+        this->settings = settingsWindow.getDataFromFields();
+    }
 }
 
 /*!

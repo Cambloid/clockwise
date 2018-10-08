@@ -5,12 +5,12 @@
 
 #include <opencv2/features2d.hpp>
 
-class SIFTDetector
+class ORBDetector
 {
 public:
-    SIFTDetector();
+    ORBDetector();
+    ~ORBDetector();
     ImageContainer StartDetecion(ImageContainer &imageContainer);
-
 };
 
 #endif // SIFTDETECTOR_H

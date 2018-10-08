@@ -1,43 +1,56 @@
 #include "DetectorManager.h"
 
-DetectorManager::DetectorManager(SettingsData &settingsData)
+DetectorManager::DetectorManager(SettingsBase &settingsBase)
 {
-    this->settingsData = settingsData;
+    this->settingsBase = settingsBase;
 }
 
 ImageContainer DetectorManager::StartDetection(ImageContainer &imageContainer)
 {
     this->imageContainer = imageContainer;
 
-    if(this->settingsData.getDetectorType() == DetectorType::CornerHarris) {
+
+
+    if(this->settingsBase.detectorType == DetectorType::CornerHarris) {
         this->configureCornerHarris();
         this->imageContainer = this->cornerHarris.StartDetection(this->imageContainer);
 
-    } else if (this->settingsData.getDetectorType() == DetectorType::ShiTomasi) {
+
+
+    } else if (this->settingsBase.detectorType == DetectorType::ShiTomasi) {
         this->configureShiTomasi();
         this->imageContainer = this->shiTomasi.StartDetection(this->imageContainer);
 
-    } else if (this->settingsData.getDetectorType() == DetectorType::SIFT) {
-        this->configureSIFT();
-        this->imageContainer = this->sift.StartDetecion(this->imageContainer);
+
+
+    } else if (this->settingsBase.detectorType == DetectorType::SIFT) {
+
+
+
+    } else if (this->settingsBase.detectorType == DetectorType::ORB) {
+        this->configureORB();
+        this->imageContainer = this->orb.StartDetecion(this->imageContainer);
+
     }
 
     return this->imageContainer;
 }
 
 
+
 void DetectorManager::configureCornerHarris()
 {
-    this->cornerHarris.setThreshold(this->settingsData.getThreshold());
+    this->cornerHarris.setThreshold(this->settingsBase.cornerHarris.threshold);
 }
 
 void DetectorManager::configureShiTomasi()
 {
-    this->shiTomasi.setNumFeatures(this->settingsData.getNumFeatures());
+    this->shiTomasi.setNumFeatures(this->settingsBase.shiTomasi.numFeatures);
 }
 
 
-void DetectorManager::configureSIFT()
+void DetectorManager::configureORB()
 {
-
+    //SettingsORB *settingsORB = dynamic_cast<SettingsORB*>(&this->settingsBase);
+    //this->orb.setNumFeatures(settingsORB->getNumFeatures());
 }

@@ -24,7 +24,7 @@ ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer)
         cv::goodFeaturesToTrack(imageGrey, corners, this->numFeatures, 0.01, 10);
 
         /*
-         Goal: Extract X Y Coordinate from mat
+            Goal: Extract X Y Coordinate from mat
         */
         // Drawing a circle around corners
         for( int i = 0; i < corners.size(); i++ ) {

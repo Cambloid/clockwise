@@ -27,10 +27,9 @@ CONFIG += c++11
 SOURCES += \
         UI/MainWindow/MainWindow.cpp \
         UI/SettingsWindow/SettingsWindow.cpp \
-        UI/SettingsWindow/SettingsData.cpp \
         FeatureDetection/CornerHarrisDetector.cpp \
         FeatureDetection/ShiTomasiDetector.cpp \
-        FeatureDetection/SIFTDetector.cpp \
+        FeatureDetection/ORBDetector.cpp \
         FeatureDetection/DetectorManager.cpp \
         Image/ImageContainer.cpp \
         Image/ImageLoader.cpp \
@@ -40,10 +39,10 @@ SOURCES += \
 HEADERS += \
         UI/MainWindow/MainWindow.h \
         UI/SettingsWindow/SettingsWindow.h \
-        UI/SettingsWindow/SettingsData.h \
+        DTO/SettingsBase.h \
         FeatureDetection/CornerHarrisDetector.h \
         FeatureDetection/ShiTomasiDetector.h \
-        FeatureDetection/SIFTDetector.h \
+        FeatureDetection/ORBDetector.h \
         FeatureDetection/DetectorManager.h \
         Image/ImageContainer.h \
         Image/ImageLoader.h

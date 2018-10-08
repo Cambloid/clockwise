@@ -4,11 +4,13 @@
 /*!
 
 */
-SettingsWindow::SettingsWindow(SettingsData data, QWidget *parent) :
+SettingsWindow::SettingsWindow(SettingsBase &data, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
+
+    QObject::connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(onAccept()));
 
     this->setFieldsFromData(data);
 }
@@ -24,34 +26,53 @@ SettingsWindow::~SettingsWindow()
 /*!
 
 */
-void SettingsWindow::setFieldsFromData(SettingsData data)
+void SettingsWindow::setFieldsFromData(SettingsBase &data)
 {
-    ui->txtThreshold->setText(QString::number(data.getThreshold()));
-    ui->txtNumFeatures->setText(QString::number(data.getNumFeatures()));
 
-    ui->rdbCornerHarris->setChecked(data.getDetectorType() == DetectorType::CornerHarris);
-    ui->rdbShiTomasi->setChecked(data.getDetectorType() == DetectorType::ShiTomasi);
-    ui->rdbSIFT->setChecked(data.getDetectorType() == DetectorType::SIFT);
+
+    if(data.detectorType == DetectorType::CornerHarris) {
+        ui->rdbCornerHarris->setChecked(true);
+
+    } else if(data.detectorType == DetectorType::ShiTomasi) {
+        ui->rdbShiTomasi->setChecked(true);
+    } else if (data.detectorType == DetectorType::SIFT) {
+
+    } else if (data.detectorType == DetectorType::ORB) {
+        ui->rdbORB->setChecked(true);
+    }
+
+
+    ui->txtThreshold->setText(QString::number(data.cornerHarris.threshold));
+    ui->txtNumFeatures->setText(QString::number(data.shiTomasi.numFeatures));
+
 
 }
 
 /*!
 
 */
-SettingsData SettingsWindow::getDataFromFields()
+SettingsBase SettingsWindow::getDataFromFields()
 {
-    SettingsData data;
+    SettingsBase settingsBase;
 
     if(ui->rdbCornerHarris->isChecked()) {
-        data.setDetectorType(DetectorType::CornerHarris);
+        settingsBase.detectorType = DetectorType::CornerHarris;
+
     } else if(ui->rdbShiTomasi->isChecked()) {
-        data.setDetectorType(DetectorType::ShiTomasi);
-    } else if (ui->rdbSIFT->isChecked()) {
-        data.setDetectorType(DetectorType::SIFT);
+        settingsBase.detectorType = DetectorType::ShiTomasi;
+
+    } else if (ui->rdbORB->isChecked()) {
+        settingsBase.detectorType = DetectorType::ORB;
     }
 
-    data.setThreshold(ui->txtThreshold->text().toInt());
-    data.setNumFeatures(ui->txtNumFeatures->text().toInt());
+    settingsBase.cornerHarris.threshold = ui->txtThreshold->text().toInt();
+    settingsBase.shiTomasi.numFeatures  = ui->txtNumFeatures->text().toInt();
 
-    return data;
+    return settingsBase;
+}
+
+void SettingsWindow::onAccept()
+{
+    this->getDataFromFields();
+    this->accept();
 }

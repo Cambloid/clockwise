@@ -133,7 +133,7 @@
     <string>Use Shi Tomasi Detector</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="rdbSIFT">
+  <widget class="QRadioButton" name="rdbORB">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -143,10 +143,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Use SIFT Detector</string>
+    <string>Use ORB Detector</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="grpSIFT">
+  <widget class="QGroupBox" name="grpORB">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -156,7 +156,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>SIFT Detector settings</string>
+    <string>ORB Detector settings</string>
    </property>
   </widget>
  </widget>

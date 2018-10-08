@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "UI/SettingsWindow/SettingsData.h"
+#include "DTO/SettingsBase.h"
 
 namespace Ui {
     class SettingsWindow;
@@ -17,7 +17,7 @@ class SettingsWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsWindow(SettingsData data, QWidget *parent = nullptr);
+    explicit SettingsWindow(SettingsBase &data, QWidget *parent = nullptr);
     ~SettingsWindow();
 
 private:
@@ -25,8 +25,13 @@ private:
 
 
 private: // Private Methods
-    void setFieldsFromData(SettingsData data);
-    SettingsData getDataFromFields();
+    void setFieldsFromData(SettingsBase &data);
+
+public:
+    SettingsBase getDataFromFields();
+
+private slots:
+    void onAccept();
 
 };
 
