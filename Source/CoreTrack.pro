@@ -31,6 +31,7 @@ SOURCES += \
         FeatureDetection/ShiTomasiDetector.cpp \
         FeatureDetection/ORBDetector.cpp \
         FeatureDetection/DetectorManager.cpp \
+        FeatureMatching/AKAZEMatcher.cpp \
         Image/ImageContainer.cpp \
         Image/ImageLoader.cpp \
         Image/ImageConverter.hpp \
@@ -44,6 +45,7 @@ HEADERS += \
         FeatureDetection/ShiTomasiDetector.h \
         FeatureDetection/ORBDetector.h \
         FeatureDetection/DetectorManager.h \
+        FeatureMatching/AKAZEMatcher.h \
         Image/ImageContainer.h \
         Image/ImageLoader.h
 
