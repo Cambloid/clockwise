@@ -1,11 +1,11 @@
-#include "FeatureDetection/ShiTomasiDetector.h"
+#include "SIFTDetector.h"
 
-ShiTomasiDetector::ShiTomasiDetector() {}
+SIFTDetector::SIFTDetector() {}
 
-ShiTomasiDetector::~ShiTomasiDetector() {}
+SIFTDetector::~SIFTDetector() {}
 
-ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer) {
-
+ImageContainer SIFTDetector::StartDetection(ImageContainer &imageContainer)
+{
     QList<cv::Mat> newImage;
     int numImages = imageContainer.getOCV_MatList().count();
     int imgIdx = 1;
@@ -19,16 +19,17 @@ ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer)
         cv::cvtColor(tmpImage, imageGrey, cv::COLOR_BGR2GRAY);
 
 
-        // Detecting corners
-        std::vector<cv::Point2f> corners;
-        cv::goodFeaturesToTrack(imageGrey, corners, this->numFeatures, 0.01, 10);
+        cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create(8000);
+
+        std::vector<cv::KeyPoint> keypointCollection;
+        sift->detect(image, keypointCollection);
 
         /*
             Goal: Extract X Y Coordinate from mat
         */
         // Drawing a circle around corners
-        for( int i = 0; i < corners.size(); i++ ) {
-            circle(tmpImage, corners[i], 3, cv::Scalar(255, 255, 255), 2, 8, 0);
+        for( int i = 0; i < keypointCollection.size(); i++ ) {
+            circle(tmpImage, keypointCollection[i].pt, 3, cv::Scalar(255, 255, 255), 2, 8, 0);
         }
 
         newImage.append(tmpImage);
@@ -38,15 +39,4 @@ ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer)
     std::cout <<  "Work finished" << std::endl ;
 
     return ImageContainer(&newImage);
-};
-
-
-int ShiTomasiDetector::getNumFeatures() const
-{
-    return numFeatures;
-}
-
-void ShiTomasiDetector::setNumFeatures(int value)
-{
-    numFeatures = value;
 }

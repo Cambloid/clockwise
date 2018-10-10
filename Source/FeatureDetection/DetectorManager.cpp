@@ -25,11 +25,12 @@ ImageContainer DetectorManager::StartDetection(ImageContainer &imageContainer)
 
     } else if (this->settingsBase.detectorType == DetectorType::SIFT) {
 
+        this->imageContainer = this->sift.StartDetection(this->imageContainer);
 
 
     } else if (this->settingsBase.detectorType == DetectorType::ORB) {
         this->configureORB();
-        this->imageContainer = this->orb.StartDetecion(this->imageContainer);
+        this->imageContainer = this->orb.StartDetection(this->imageContainer);
 
     }
 

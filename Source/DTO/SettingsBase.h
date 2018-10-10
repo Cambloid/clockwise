@@ -36,6 +36,22 @@ struct SettingsBase {
             threshold = 200;
         }
     } cornerHarris;
+
+    struct ORB {
+        int numFeatures;
+        ORB()  {
+           numFeatures = 10000;
+        }
+
+    } orb;
+
+    struct SIFT {
+
+        SIFT()  {
+
+        }
+
+    } sift;
 };
 
 

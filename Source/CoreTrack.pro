@@ -30,6 +30,7 @@ SOURCES += \
         FeatureDetection/CornerHarrisDetector.cpp \
         FeatureDetection/ShiTomasiDetector.cpp \
         FeatureDetection/ORBDetector.cpp \
+        FeatureDetection/SIFTDetector.cpp \
         FeatureDetection/DetectorManager.cpp \
         FeatureMatching/AKAZEMatcher.cpp \
         Image/ImageContainer.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
         FeatureDetection/CornerHarrisDetector.h \
         FeatureDetection/ShiTomasiDetector.h \
         FeatureDetection/ORBDetector.h \
+        FeatureDetection/SIFTDetector.h \
         FeatureDetection/DetectorManager.h \
         FeatureMatching/AKAZEMatcher.h \
         Image/ImageContainer.h \
@@ -59,9 +61,27 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/x64/vc15/lib/ -lopencv_world343
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/x64/vc15/lib/ -lopencv_world343d
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_core400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_core400d
 
-INCLUDEPATH += $$PWD/../External/opencv/build/include
-DEPENDPATH += $$PWD/../External/opencv/build/include
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_imgcodecs400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_imgcodecs400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_imgproc400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_imgproc400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_highgui400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_highgui400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_img_hash400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_img_hash400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_xfeatures2d400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_xfeatures2d400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_features2d400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_features2d400d
+
+INCLUDEPATH += $$PWD/../External/opencv/build/install/include
+DEPENDPATH += $$PWD/../External/opencv/build/install/include
 

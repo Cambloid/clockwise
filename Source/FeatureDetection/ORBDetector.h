@@ -1,5 +1,5 @@
-#ifndef SIFTDETECTOR_H
-#define SIFTDETECTOR_H
+#ifndef ORBDETECTOR_H
+#define ORBDETECTOR_H
 
 #include "Image/ImageContainer.h"
 
@@ -7,10 +7,17 @@
 
 class ORBDetector
 {
+private:
+    int numFeatures = 10000;
+
 public:
     ORBDetector();
     ~ORBDetector();
-    ImageContainer StartDetecion(ImageContainer &imageContainer);
+    ImageContainer StartDetection(ImageContainer &imageContainer);
+
+
+    int getNumFeatures() const;
+    void setNumFeatures(int value);
 };
 
-#endif // SIFTDETECTOR_H
+#endif // ORBDETECTOR_H

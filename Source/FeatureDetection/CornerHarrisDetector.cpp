@@ -35,7 +35,7 @@ ImageContainer CornerHarrisDetector::StartDetection(ImageContainer &imageContain
 
         // Convert image to a grey image
         cv::Mat imageGrey;
-        cv::cvtColor(tmpImage, imageGrey, CV_BGR2GRAY);
+        cv::cvtColor(tmpImage, imageGrey, cv::COLOR_BGR2GRAY);
 
         // Create threshold image matrix
         cv::Mat dst, dst_norm, dst_norm_scaled;

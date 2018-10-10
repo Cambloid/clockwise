@@ -7,6 +7,7 @@
 #include "FeatureDetection/CornerHarrisDetector.h"
 #include "FeatureDetection/ShiTomasidetector.h"
 #include "FeatureDetection/ORBDetector.h"
+#include "FeatureDetection/SIFTDetector.h"
 
 class DetectorManager
 {
@@ -17,6 +18,7 @@ private:
     CornerHarrisDetector cornerHarris;
     ShiTomasiDetector shiTomasi;
     ORBDetector orb;
+    SIFTDetector sift;
 
 public:
     DetectorManager(SettingsBase &settingsData);

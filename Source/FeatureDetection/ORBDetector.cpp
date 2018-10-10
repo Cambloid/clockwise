@@ -1,10 +1,11 @@
 #include "ORBDetector.h"
 
+
 ORBDetector::ORBDetector() {}
 
 ORBDetector::~ORBDetector() {}
 
-ImageContainer ORBDetector::StartDetecion(ImageContainer &imageContainer)
+ImageContainer ORBDetector::StartDetection(ImageContainer &imageContainer)
 {
 
     QList<cv::Mat> newImage;
@@ -14,7 +15,7 @@ ImageContainer ORBDetector::StartDetecion(ImageContainer &imageContainer)
         cv::Mat tmpImage = image.clone();
         std::cout << "Working on Image " << imgIdx << " / " << numImages << std::endl;
 
-        cv::Ptr<cv::ORB> orbInstance = cv::ORB::create();
+        cv::Ptr<cv::ORB> orbInstance = cv::ORB::create(this->getNumFeatures());
 
         std::vector<cv::KeyPoint> keyPointCollection;
         orbInstance->detect(tmpImage, keyPointCollection);
@@ -33,4 +34,15 @@ ImageContainer ORBDetector::StartDetecion(ImageContainer &imageContainer)
     std::cout <<  "Work finished" << std::endl;
 
     return ImageContainer(&newImage);
+}
+
+
+int ORBDetector::getNumFeatures() const
+{
+    return numFeatures;
+}
+
+void ORBDetector::setNumFeatures(int value)
+{
+    numFeatures = value;
 }
