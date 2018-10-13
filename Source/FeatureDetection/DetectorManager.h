@@ -1,7 +1,9 @@
-#ifndef DETECTORMANAGER_H
-#define DETECTORMANAGER_H
+#pragma once
+
+#include <QList>
 
 #include "DTO/SettingsBase.h"
+#include "DTO/FeatureContainer.h"
 
 #include "Image/ImageContainer.h"
 #include "FeatureDetection/CornerHarrisDetector.h"
@@ -12,7 +14,8 @@
 class DetectorManager
 {
 private:
-    ImageContainer imageContainer;
+    QList<ImageContainer> imageContainerList;
+    QList<FeatureContainer> featureContainerList;
 
     SettingsBase settingsBase;
     CornerHarrisDetector cornerHarris;
@@ -22,13 +25,10 @@ private:
 
 public:
     DetectorManager(SettingsBase &settingsData);
-    ImageContainer StartDetection(ImageContainer &imagecontainer);
+    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imagecontainerList);
 
 private:
     void configureCornerHarris();
     void configureShiTomasi();
     void configureORB();
-
 };
-
-#endif // DETECTORMANAGER_H

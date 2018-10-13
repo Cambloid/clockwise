@@ -17,11 +17,12 @@ void CornerHarrisDetector::setThreshold(int threshold) {
 
 
 
-ImageContainer CornerHarrisDetector::StartDetection(ImageContainer &imageContainer) {
+QList<FeatureContainer> CornerHarrisDetector::StartDetection(QList<ImageContainer> &imageContainerList) {
 
     QList<cv::Mat> newImage;
+    QList<FeatureContainer> featureContainerList;
 
-    int numImages = imageContainer.getOCV_MatList().count();
+    int numImages = imageContainerList.count();
     int imgIdx = 1;
 
     // Detector parameters
@@ -29,8 +30,8 @@ ImageContainer CornerHarrisDetector::StartDetection(ImageContainer &imageContain
     int apertureSize = 3;
     double k = 0.04;
 
-    foreach(cv::Mat image, imageContainer.getOCV_MatList()) {
-        cv::Mat tmpImage = image.clone();
+    foreach(ImageContainer image, imageContainerList) {
+        cv::Mat tmpImage = image.getImage().clone();
         std::cout << "Working on Image " << imgIdx << " / " << numImages << std::endl;
 
         // Convert image to a grey image
@@ -67,10 +68,11 @@ ImageContainer CornerHarrisDetector::StartDetection(ImageContainer &imageContain
         }
 
         newImage.append(tmpImage);
+        //featureContainerList.append(FeatureContainer());
         imgIdx++;
     }
 
     std::cout <<  "Work finished" << std::endl ;
 
-    return ImageContainer(&newImage);
+    return featureContainerList;
 }

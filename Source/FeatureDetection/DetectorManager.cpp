@@ -5,39 +5,28 @@ DetectorManager::DetectorManager(SettingsBase &settingsBase)
     this->settingsBase = settingsBase;
 }
 
-ImageContainer DetectorManager::StartDetection(ImageContainer &imageContainer)
+QList<FeatureContainer> DetectorManager::StartDetection(QList<ImageContainer> &imagecontainerList)
 {
-    this->imageContainer = imageContainer;
-
-
+    this->imageContainerList = imagecontainerList;
 
     if(this->settingsBase.detectorType == DetectorType::CornerHarris) {
         this->configureCornerHarris();
-        this->imageContainer = this->cornerHarris.StartDetection(this->imageContainer);
-
-
+        this->featureContainerList = this->cornerHarris.StartDetection(this->imageContainerList);
 
     } else if (this->settingsBase.detectorType == DetectorType::ShiTomasi) {
         this->configureShiTomasi();
-        this->imageContainer = this->shiTomasi.StartDetection(this->imageContainer);
-
-
+        this->featureContainerList = this->shiTomasi.StartDetection(this->imageContainerList);
 
     } else if (this->settingsBase.detectorType == DetectorType::SIFT) {
-
-        this->imageContainer = this->sift.StartDetection(this->imageContainer);
-
+        this->featureContainerList = this->sift.StartDetection(this->imageContainerList);
 
     } else if (this->settingsBase.detectorType == DetectorType::ORB) {
         this->configureORB();
-        this->imageContainer = this->orb.StartDetection(this->imageContainer);
+        this->featureContainerList = this->orb.StartDetection(this->imageContainerList);
 
     }
-
-    return this->imageContainer;
+    return this->featureContainerList;
 }
-
-
 
 void DetectorManager::configureCornerHarris()
 {
@@ -48,7 +37,6 @@ void DetectorManager::configureShiTomasi()
 {
     this->shiTomasi.setNumFeatures(this->settingsBase.shiTomasi.numFeatures);
 }
-
 
 void DetectorManager::configureORB()
 {

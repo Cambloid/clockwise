@@ -1,7 +1,7 @@
-#ifndef SHITOMASIDETECTOR_H
-#define SHITOMASIDETECTOR_H
+#pragma once
 
 #include "Image/ImageContainer.h"
+#include "DTO/FeatureContainer.h"
 
 #include <QList>
 
@@ -21,11 +21,9 @@ private:
 public:
     ShiTomasiDetector();
     ~ShiTomasiDetector();
-    ImageContainer StartDetection(ImageContainer &imageContainer);
+    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
 
 
     int getNumFeatures() const;
     void setNumFeatures(int value);
 };
-
-#endif // SHITOMASIDETECTOR_H

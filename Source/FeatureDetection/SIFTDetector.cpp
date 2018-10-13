@@ -4,39 +4,32 @@ SIFTDetector::SIFTDetector() {}
 
 SIFTDetector::~SIFTDetector() {}
 
-ImageContainer SIFTDetector::StartDetection(ImageContainer &imageContainer)
+QList<FeatureContainer> SIFTDetector::StartDetection(QList<ImageContainer> &imageContainerList)
 {
+
     QList<cv::Mat> newImage;
-    int numImages = imageContainer.getOCV_MatList().count();
+    QList<FeatureContainer> featureContainerList;
+    int numImages = imageContainerList.count();
     int imgIdx = 1;
 
-    foreach(cv::Mat image, imageContainer.getOCV_MatList()) {
-        cv::Mat tmpImage = image.clone();
+    foreach(ImageContainer image, imageContainerList) {
+        cv::Mat tmpImage = image.getImage().clone();
         std::cout << "Working on Image " << imgIdx << " / " << numImages << std::endl;
 
         // Convert image to a grey image
         cv::Mat imageGrey;
         cv::cvtColor(tmpImage, imageGrey, cv::COLOR_BGR2GRAY);
 
-
         cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create(8000);
 
         std::vector<cv::KeyPoint> keypointCollection;
-        sift->detect(image, keypointCollection);
-
-        /*
-            Goal: Extract X Y Coordinate from mat
-        */
-        // Drawing a circle around corners
-        for( int i = 0; i < keypointCollection.size(); i++ ) {
-            circle(tmpImage, keypointCollection[i].pt, 3, cv::Scalar(255, 255, 255), 2, 8, 0);
-        }
+        sift->detect(imageGrey, keypointCollection);
 
         newImage.append(tmpImage);
+        featureContainerList.append(FeatureContainer(keypointCollection));
         imgIdx++;
     }
-
     std::cout <<  "Work finished" << std::endl ;
 
-    return ImageContainer(&newImage);
+    return featureContainerList;
 }

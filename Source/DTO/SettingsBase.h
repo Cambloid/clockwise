@@ -1,5 +1,4 @@
-#ifndef SETTINGSDATABASE_H
-#define SETTINGSDATABASE_H
+#pragma once
 
 /*!
 
@@ -53,7 +52,3 @@ struct SettingsBase {
 
     } sift;
 };
-
-
-#endif // SETTINGSDATABASE_H
-

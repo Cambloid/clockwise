@@ -5,14 +5,17 @@ ORBDetector::ORBDetector() {}
 
 ORBDetector::~ORBDetector() {}
 
-ImageContainer ORBDetector::StartDetection(ImageContainer &imageContainer)
+QList<FeatureContainer> ORBDetector::StartDetection(QList<ImageContainer> &imageContainerList)
 {
 
     QList<cv::Mat> newImage;
-    int numImages = imageContainer.getOCV_MatList().count();
+    QList<FeatureContainer> featureContainerList;
+    int numImages = imageContainerList.count();
     int imgIdx = 1;
-    foreach(cv::Mat image, imageContainer.getOCV_MatList()) {
-        cv::Mat tmpImage = image.clone();
+
+
+    foreach(ImageContainer image, imageContainerList) {
+        cv::Mat tmpImage = image.getImage().clone();
         std::cout << "Working on Image " << imgIdx << " / " << numImages << std::endl;
 
         cv::Ptr<cv::ORB> orbInstance = cv::ORB::create(this->getNumFeatures());
@@ -28,12 +31,13 @@ ImageContainer ORBDetector::StartDetection(ImageContainer &imageContainer)
         }
 
         newImage.append(tmpImage);
+        featureContainerList.append(FeatureContainer(keyPointCollection));
         imgIdx++;
     }
 
     std::cout <<  "Work finished" << std::endl;
 
-    return ImageContainer(&newImage);
+    return featureContainerList;
 }
 
 

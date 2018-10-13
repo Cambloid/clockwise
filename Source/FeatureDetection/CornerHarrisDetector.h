@@ -1,7 +1,7 @@
-#ifndef CORNERHARRISDETECTOR_H
-#define CORNERHARRISDETECTOR_H
+#pragma once
 
 #include "Image/ImageContainer.h"
+#include "DTO/FeatureContainer.h"
 
 #include <QMainWindow>
 #include <QDebug>
@@ -34,8 +34,6 @@ public: // Konstruktor
 public:
     int getThreshold();
     void setThreshold(int threshold);
-    ImageContainer StartDetection(ImageContainer &imageContainer);
+    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
 
 };
-
-#endif

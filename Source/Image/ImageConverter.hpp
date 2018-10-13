@@ -1,5 +1,4 @@
-#ifndef IMAGECONVERTER_H
-#define IMAGECONVERTER_H
+#pragma once
 
 #include <QPixmap>
 
@@ -16,6 +15,3 @@ public:
     }
 
 };
-
-
-#endif // IMAGECONVERTER_H

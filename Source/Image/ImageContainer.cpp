@@ -1,33 +1,17 @@
-#include "ImageContainer.h"
+#include "Image/ImageContainer.h"
 
 ImageContainer::ImageContainer() {
 
 }
 
-ImageContainer::ImageContainer(QList<cv::Mat> *imageCollection) {
-    this->ocv_MatList = *imageCollection;
-}
-
-ImageContainer::ImageContainer(QStringList fileCollection) {
-    this->fileCollection = fileCollection;
+ImageContainer::ImageContainer(cv::Mat image) {
+    this->imageData = image;
 }
 
 ImageContainer::~ImageContainer() {
 
 }
 
-QList<cv::Mat> ImageContainer::getOCV_MatList() {
-    return this->ocv_MatList;
+cv::Mat ImageContainer::getImage() {
+    return this->imageData;
 }
-
-void ImageContainer::LoadAll() {
-
-    if(this->fileCollection.isEmpty()) {
-        std::cout << "Container is empty" << std::endl;
-        return;
-    }
-
-    ImageLoader loader;
-    this->ocv_MatList = loader.BulkLoadImage(this->fileCollection);
-}
-

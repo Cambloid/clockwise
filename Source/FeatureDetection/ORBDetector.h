@@ -1,7 +1,7 @@
-#ifndef ORBDETECTOR_H
-#define ORBDETECTOR_H
+#pragma once
 
 #include "Image/ImageContainer.h"
+#include "DTO/FeatureContainer.h"
 
 #include <opencv2/features2d.hpp>
 
@@ -13,11 +13,9 @@ private:
 public:
     ORBDetector();
     ~ORBDetector();
-    ImageContainer StartDetection(ImageContainer &imageContainer);
+    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
 
 
     int getNumFeatures() const;
     void setNumFeatures(int value);
 };
-
-#endif // ORBDETECTOR_H

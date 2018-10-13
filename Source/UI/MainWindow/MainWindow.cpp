@@ -35,11 +35,11 @@ MainWindow::~MainWindow()
 void MainWindow::presentImage() {
     int currIdx = ui->sldCurrentImage->value();
 
-    if(imgContainer.getOCV_MatList().count() <= 0) {
+    if(this->imgContainerList.count() <= 0 || this->featureContainerList.count() <= 0) {
         return;
     }
 
-    cv::Mat currImage = imgContainer.getOCV_MatList().at(currIdx);
+    cv::Mat currImage = ImageUtils::DrawKeypointFeatures(imgContainerList[currIdx].getImage(), this->featureContainerList[currIdx]);
     QPixmap pixmapImg = ImageConverter::ToQPixmap(currImage);
 
     ui->lblImage->setPixmap(pixmapImg.scaled(ui->lblImage->width(), ui->lblImage->height(), Qt::KeepAspectRatio));
@@ -53,7 +53,7 @@ void MainWindow::btnDetectFeatures_clicked() {
     std::cout << "btnDetectFeatures_clicked" << std::endl;
 
     DetectorManager detector(this->settings);
-    this->imgContainer = detector.StartDetection(this->imgContainer);
+    this->featureContainerList = detector.StartDetection(this->imgContainerList);
 
     this->presentImage();
 }
@@ -61,15 +61,15 @@ void MainWindow::btnDetectFeatures_clicked() {
 /*!
 
 */
-void MainWindow::btnLoadImage_clicked() {
+void MainWindow::btnLoadImage_clicked()
+{
 
-    ImageLoader loader;
-    ImageContainer imgContainer(loader.PickImage());
+    this->imgContainerList = ImageLoader::BulkLoadImage(ImageLoader::PickImages());
+    //ImageLoader loader;
+    //loader.PickImage();
+    //this->imgContainerList = loader.BulkLoadImageList();
 
-    imgContainer.LoadAll();
-
-    this->imgContainer = imgContainer;
-    ui->sldCurrentImage->setRange(0, imgContainer.getOCV_MatList().count() - 1);
+    ui->sldCurrentImage->setRange(0, this->imgContainerList.count() - 1);
 
     this->presentImage();
 }

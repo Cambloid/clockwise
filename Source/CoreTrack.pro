@@ -32,24 +32,25 @@ SOURCES += \
         FeatureDetection/ORBDetector.cpp \
         FeatureDetection/SIFTDetector.cpp \
         FeatureDetection/DetectorManager.cpp \
-        FeatureMatching/AKAZEMatcher.cpp \
+        FeatureMatching/FLANNMatcher.cpp \
         Image/ImageContainer.cpp \
-        Image/ImageLoader.cpp \
-        Image/ImageConverter.hpp \
         Main.cpp
 
 HEADERS += \
         UI/MainWindow/MainWindow.h \
         UI/SettingsWindow/SettingsWindow.h \
         DTO/SettingsBase.h \
+        DTO/FeatureContainer.h \
         FeatureDetection/CornerHarrisDetector.h \
         FeatureDetection/ShiTomasiDetector.h \
         FeatureDetection/ORBDetector.h \
         FeatureDetection/SIFTDetector.h \
         FeatureDetection/DetectorManager.h \
-        FeatureMatching/AKAZEMatcher.h \
-        Image/ImageContainer.h \
-        Image/ImageLoader.h
+        FeatureMatching/FLANNMatcher.h \
+        Image/ImageConverter.hpp \
+        Image/ImageUtils.hpp \
+        Image/ImageLoader.hpp \
+        Image/ImageContainer.h
 
 FORMS += \
         UI/MainWindow/MainWindow.ui \

@@ -4,14 +4,16 @@ ShiTomasiDetector::ShiTomasiDetector() {}
 
 ShiTomasiDetector::~ShiTomasiDetector() {}
 
-ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer) {
+QList<FeatureContainer> ShiTomasiDetector::StartDetection(QList<ImageContainer> &imageContainerList) {
 
     QList<cv::Mat> newImage;
-    int numImages = imageContainer.getOCV_MatList().count();
+    QList<FeatureContainer> featureContainerList;
+
+    int numImages = imageContainerList.count();
     int imgIdx = 1;
 
-    foreach(cv::Mat image, imageContainer.getOCV_MatList()) {
-        cv::Mat tmpImage = image.clone();
+    foreach(ImageContainer image, imageContainerList) {
+        cv::Mat tmpImage = image.getImage().clone();
         std::cout << "Working on Image " << imgIdx << " / " << numImages << std::endl;
 
         // Convert image to a grey image
@@ -32,12 +34,13 @@ ImageContainer ShiTomasiDetector::StartDetection(ImageContainer &imageContainer)
         }
 
         newImage.append(tmpImage);
+        //featureContainerList.append(corners)
         imgIdx++;
     }
 
     std::cout <<  "Work finished" << std::endl ;
 
-    return ImageContainer(&newImage);
+    return featureContainerList;
 };
 
 

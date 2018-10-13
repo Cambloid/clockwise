@@ -1,7 +1,8 @@
-#ifndef SIFTDETECTOR_H
-#define SIFTDETECTOR_H
+#pragma once
 
 #include "Image/ImageContainer.h"
+#include "DTO/FeatureContainer.h"
+
 #include <opencv2/xfeatures2d.hpp>
 
 class SIFTDetector
@@ -9,8 +10,6 @@ class SIFTDetector
 public:
     SIFTDetector();
     ~SIFTDetector();
-    ImageContainer StartDetection(ImageContainer &imageContainer);
+    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
 
 };
-
-#endif // SIFTDETECTOR_H

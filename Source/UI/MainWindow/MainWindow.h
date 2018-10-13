@@ -1,9 +1,9 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
-#include "Image/ImageLoader.h"
+#include "Image/ImageLoader.hpp"
 #include "Image/ImageContainer.h"
 #include "Image/ImageConverter.hpp"
+#include "Image/ImageUtils.hpp"
 
 #include "FeatureDetection/DetectorManager.h"
 
@@ -41,7 +41,8 @@ public:
 
 private: // Private instancevariables
     Ui::MainWindow *ui;
-    ImageContainer imgContainer;
+    QList<ImageContainer> imgContainerList;
+    QList<FeatureContainer> featureContainerList;
     SettingsBase settings;
 
 private: // Private Methods
@@ -58,5 +59,3 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
 };
-
-#endif // MAINWINDOW_H
