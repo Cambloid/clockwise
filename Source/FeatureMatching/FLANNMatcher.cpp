@@ -6,9 +6,6 @@ FLANNMatcher::FLANNMatcher(QList<ImageContainer> &imageList, QList<FeatureContai
     this->featureContainerList = featureContainerList;
 }
 
-
-
-
 cv::Mat computeDescriptor(cv::Ptr<cv::xfeatures2d::SIFT> &sift, ImageContainer &imgContainer, FeatureContainer &featureContainer)
 {
     cv::Mat descriptor;
@@ -17,19 +14,19 @@ cv::Mat computeDescriptor(cv::Ptr<cv::xfeatures2d::SIFT> &sift, ImageContainer &
     return descriptor;
 }
 
-
 std::vector<cv::DMatch> matchFeatures(cv::FlannBasedMatcher matcher, cv::Mat descriptor1, cv::Mat descriptor2) {
     std::vector<cv::DMatch> matchList;
     matcher.match(descriptor1, descriptor2, matchList);
     return matchList;
 }
 
-
 void FLANNMatcher::StartMatching()
 {
+
     if(imageList.count() != featureContainerList.count()) {
         return;
     }
+
     cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create();
 
     ImageContainer prevImgContainer;
@@ -39,6 +36,7 @@ void FLANNMatcher::StartMatching()
 
     cv::Mat descriptor;
     cv::Mat prevDescriptor;
+
     std::vector<cv::DMatch> matchList;
 
     cv::FlannBasedMatcher matcher;
@@ -49,9 +47,9 @@ void FLANNMatcher::StartMatching()
         {
             prevImgContainer = imageList.at(i);
             prevFeatureContainer = featureContainerList.at(i);
-
             continue;
         }
+
 
         imgContainer = imageList.at(i);
         featureContainer = featureContainerList.at(i);
@@ -61,7 +59,7 @@ void FLANNMatcher::StartMatching()
 
         double max_dist = 0;
         double min_dist = 100;
-        for( int i = 0; i < descriptor.rows; i++ )
+        for(int i = 0; i < descriptor.rows; i++)
         {
             double dist = matchList[i].distance;
             if( dist < min_dist ) min_dist = dist;

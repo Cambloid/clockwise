@@ -33,8 +33,9 @@ SOURCES += \
         FeatureDetection/SIFTDetector.cpp \
         FeatureDetection/DetectorManager.cpp \
         FeatureMatching/FLANNMatcher.cpp \
+        DescriptorExtractor/SIFTDescriptorExtractor.cpp \
         Image/ImageContainer.cpp \
-        Main.cpp
+        Main.cpp \
 
 HEADERS += \
         UI/MainWindow/MainWindow.h \
@@ -47,6 +48,7 @@ HEADERS += \
         FeatureDetection/SIFTDetector.h \
         FeatureDetection/DetectorManager.h \
         FeatureMatching/FLANNMatcher.h \
+        DescriptorExtractor/SIFTDescriptorExtractor.h \
         Image/ImageConverter.hpp \
         Image/ImageUtils.hpp \
         Image/ImageLoader.hpp \
@@ -83,6 +85,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/buil
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_features2d400
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_features2d400d
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_flann400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_flann400d
+
 INCLUDEPATH += $$PWD/../External/opencv/build/install/include
 DEPENDPATH += $$PWD/../External/opencv/build/install/include
-
