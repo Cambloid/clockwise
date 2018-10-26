@@ -9,6 +9,10 @@ struct FeatureContainer
 {
     std::vector<cv::KeyPoint> keyPointList;
 
+    FeatureContainer() {
+
+    }
+
     FeatureContainer(std::vector<cv::KeyPoint> keyPointList) {
         this->keyPointList = keyPointList;
     }

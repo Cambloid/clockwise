@@ -1,0 +1,6 @@
+[submodule "External/opencv/sources/opencv"]
+	path = External/opencv/sources/opencv
+	url = https://github.com/CoreTrackProject/opencv.git
+[submodule "External/opencv/sources/opencv_contrib"]
+	path = External/opencv/sources/opencv_contrib
+	url = https://github.com/CoreTrackProject/opencv_contrib.git
