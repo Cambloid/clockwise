@@ -38,7 +38,12 @@ void MainWindow::presentImage() {
     int currIdx = ui->sldCurrentImage->value();
 
     if(this->imgContainerList.count() <= 0 || this->featureContainerList.count() <= 0) {
+
+        std::cout << "imgContainerList count:" << this->imgContainerList.count() << std::endl;
+        std::cout << "featureContainerList count:" << this->featureContainerList.count() << std::endl;
+
         return;
+
     }
 
     cv::Mat currImage = ImageUtils::DrawKeypointFeatures(imgContainerList[currIdx].getImage(), this->featureContainerList[currIdx]);
@@ -75,6 +80,26 @@ void MainWindow::btnLoadImage_clicked()
 /*!
 
 */
+void MainWindow::btnMatchFeatures_clicked()
+{
+    if(this->imgContainerList.count() != this->featureContainerList.count()) {
+        return;
+    }
+
+    SIFTDescriptorExtractor extractor;
+    this->descContainerList = extractor.StartExtraction(this->imgContainerList, this->featureContainerList);
+
+    std::cout << "descriptorList count " << this->descContainerList.size() << std::endl;
+
+    FLANNMatcher matcher(this->imgContainerList, this->descContainerList);
+    this->dmatchContainerList = matcher.StartMatching();
+
+    std::cout << "DMatchContainer List count " << this->dmatchContainerList.size() << std::endl;
+}
+
+/*!
+
+*/
 void MainWindow::sldCurrentImage_valueChanged() {
     this->presentImage();
 }
@@ -92,13 +117,7 @@ void MainWindow::btnSettings_clicked() {
     }
 }
 
-/*!
 
-*/
-void MainWindow::btnMatchFeatures_clicked()
-{
-
-}
 
 /*!
 

@@ -1,9 +1,9 @@
 #include "FLANNMatcher.h"
 
-FLANNMatcher::FLANNMatcher(QList<ImageContainer> &imageList, QList<SIFTDescriptorContainer> &siftDescriptorContainer)
+FLANNMatcher::FLANNMatcher(QList<ImageContainer> &imageList, QList<SIFTDescriptorContainer> &siftDescriptorContainerList)
 {
     this->imageList = imageList;
-    this->siftDescriptorContainer = siftDescriptorContainer;
+    this->siftDescriptorContainer = siftDescriptorContainerList;
 }
 
 std::vector<cv::DMatch> FLANNMatcher::matchFeatures(cv::FlannBasedMatcher matcher, cv::Mat descriptor1, cv::Mat descriptor2) {
@@ -32,6 +32,9 @@ std::vector<DMatchContainer> FLANNMatcher::StartMatching()
 
     // Foreach image
     for(int i = 0; i < imageList.count(); i++) {
+
+        std::cout << "Matching Descriptors of Image: " << i + 1 << " of " << imageList.count() << std::endl;
+
         currImage = this->imageList.at(i);
         descContainer = this->siftDescriptorContainer.at(i);
 

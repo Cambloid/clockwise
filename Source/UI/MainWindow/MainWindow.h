@@ -12,6 +12,12 @@
 #include "DTO/SIFTDescriptorContainer.h"
 #include "DTO/DMatchContainer.h"
 
+#include "DescriptorExtractor/SIFTDescriptorExtractor.h"
+#include "DTO/SIFTDescriptorContainer.h"
+
+#include "FeatureMatching/FLANNMatcher.h"
+
+
 #include <QMainWindow>
 #include <QDebug>
 #include <QGraphicsScene>
@@ -47,7 +53,7 @@ private: // Private instancevariables
     QList<FeatureContainer> featureContainerList;
 
     QList<SIFTDescriptorContainer> descContainerList;
-    QList<DMatchContainer> dmatchContainerList;
+    std::vector<DMatchContainer> dmatchContainerList;
 
     SettingsBase settings;
 

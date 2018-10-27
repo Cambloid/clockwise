@@ -18,7 +18,7 @@ struct SettingsBase {
     DetectorType detectorType;
 
     SettingsBase() {
-        this->detectorType = DetectorType::CornerHarris;
+        this->detectorType = DetectorType::SIFT;
     }
 
     struct ShiTomasi {

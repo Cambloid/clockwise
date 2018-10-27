@@ -6,6 +6,8 @@
 #include "Image/ImageContainer.h"
 #include "DTO/FeatureContainer.h"
 
+#include "DTO/SIFTDescriptorContainer.h"
+
 #include <opencv2/core.hpp>
 #include <opencv2/opencv_modules.hpp>
 #include <opencv2/core.hpp>
@@ -16,7 +18,8 @@
 
 class SIFTDescriptorExtractor
 {
+public:
     SIFTDescriptorExtractor();
 
-    QList<cv::Mat> StartExtraction(QList<ImageContainer> &imgContainerList, QList<FeatureContainer> &featureContainerList);
+    QList<SIFTDescriptorContainer> StartExtraction(QList<ImageContainer> &imgContainerList, QList<FeatureContainer> &featureContainerList);
 };
