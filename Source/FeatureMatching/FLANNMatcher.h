@@ -5,6 +5,9 @@
 #include "Image/ImageContainer.h"
 #include "DTO/FeatureContainer.h"
 
+#include "DescriptorExtractor/SIFTDescriptorExtractor.h"
+#include "DTO/SIFTDescriptorContainer.h"
+#include "DTO/DMatchContainer.h"
 
 #include "opencv2/opencv_modules.hpp"
 #include "opencv2/core.hpp"
@@ -17,12 +20,14 @@ class FLANNMatcher
 {
 private:
     QList<ImageContainer> imageList;
-    QList<FeatureContainer> featureContainerList;
+    QList<SIFTDescriptorContainer> siftDescriptorContainer;
+
+    std::vector<cv::DMatch> matchFeatures(cv::FlannBasedMatcher matcher, cv::Mat descriptor1, cv::Mat descriptor2);
 
 public:
-    FLANNMatcher(QList<ImageContainer> &imageList, QList<FeatureContainer> &featureContainerList);
+    FLANNMatcher(QList<ImageContainer> &imageList, QList<SIFTDescriptorContainer> &siftFeatureContainer);
 
 public:
-    void StartMatching();
+    std::vector<DMatchContainer> StartMatching();
 
 };

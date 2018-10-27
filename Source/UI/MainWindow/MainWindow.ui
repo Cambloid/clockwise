@@ -46,16 +46,23 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnSettings">
+     <widget class="QPushButton" name="btnDetectFeatures">
       <property name="text">
-       <string>Settings</string>
+       <string>Detect features</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnDetectFeatures">
+     <widget class="QPushButton" name="btnMatchFeatures">
       <property name="text">
-       <string>Detect features</string>
+       <string>Match Features</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnSettings">
+      <property name="text">
+       <string>Settings</string>
       </property>
      </widget>
     </item>

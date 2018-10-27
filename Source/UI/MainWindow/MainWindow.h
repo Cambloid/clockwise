@@ -9,6 +9,8 @@
 
 #include "UI/SettingsWindow/SettingsWindow.h"
 #include "DTO/SettingsBase.h"
+#include "DTO/SIFTDescriptorContainer.h"
+#include "DTO/DMatchContainer.h"
 
 #include <QMainWindow>
 #include <QDebug>
@@ -43,6 +45,10 @@ private: // Private instancevariables
     Ui::MainWindow *ui;
     QList<ImageContainer> imgContainerList;
     QList<FeatureContainer> featureContainerList;
+
+    QList<SIFTDescriptorContainer> descContainerList;
+    QList<DMatchContainer> dmatchContainerList;
+
     SettingsBase settings;
 
 private: // Private Methods
@@ -52,6 +58,7 @@ private: // Private Methods
 private slots: // Events
     void btnLoadImage_clicked();
     void btnDetectFeatures_clicked();
+    void btnMatchFeatures_clicked();
     void btnSettings_clicked();
     void sldCurrentImage_valueChanged();
 

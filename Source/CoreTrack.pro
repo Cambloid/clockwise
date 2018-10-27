@@ -42,6 +42,8 @@ HEADERS += \
         UI/SettingsWindow/SettingsWindow.h \
         DTO/SettingsBase.h \
         DTO/FeatureContainer.h \
+        DTO/SIFTDescriptorContainer.h \
+        DTO/DMatchContainer.h \
         FeatureDetection/CornerHarrisDetector.h \
         FeatureDetection/ShiTomasiDetector.h \
         FeatureDetection/ORBDetector.h \
@@ -53,6 +55,7 @@ HEADERS += \
         Image/ImageUtils.hpp \
         Image/ImageLoader.hpp \
         Image/ImageContainer.h
+
 
 FORMS += \
         UI/MainWindow/MainWindow.ui \

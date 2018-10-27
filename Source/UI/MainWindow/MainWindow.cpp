@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->connect(ui->btnLoadImage,      SIGNAL(clicked()),         this, SLOT(btnLoadImage_clicked()));
     this->connect(ui->btnDetectFeatures, SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
     this->connect(ui->btnSettings,       SIGNAL(clicked()),         this, SLOT(btnSettings_clicked()));
+    this->connect(ui->btnMatchFeatures,  SIGNAL(clicked()),         this, SLOT(btnMatchFeatures_clicked()));
     this->connect(ui->sldCurrentImage,   SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
 
 }
@@ -28,6 +29,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 /*!
 
@@ -58,17 +60,13 @@ void MainWindow::btnDetectFeatures_clicked() {
     this->presentImage();
 }
 
+
 /*!
 
 */
 void MainWindow::btnLoadImage_clicked()
 {
-
     this->imgContainerList = ImageLoader::BulkLoadImage(ImageLoader::PickImages());
-    //ImageLoader loader;
-    //loader.PickImage();
-    //this->imgContainerList = loader.BulkLoadImageList();
-
     ui->sldCurrentImage->setRange(0, this->imgContainerList.count() - 1);
 
     this->presentImage();
@@ -85,12 +83,21 @@ void MainWindow::sldCurrentImage_valueChanged() {
 
 */
 void MainWindow::btnSettings_clicked() {
+
     SettingsWindow settingsWindow(this->settings);
     settingsWindow.exec();
 
     if(settingsWindow.result() == QDialog::Accepted) {
         this->settings = settingsWindow.getDataFromFields();
     }
+}
+
+/*!
+
+*/
+void MainWindow::btnMatchFeatures_clicked()
+{
+
 }
 
 /*!

@@ -1,86 +1,75 @@
 #include "FLANNMatcher.h"
 
-FLANNMatcher::FLANNMatcher(QList<ImageContainer> &imageList, QList<FeatureContainer> &featureContainerList)
+FLANNMatcher::FLANNMatcher(QList<ImageContainer> &imageList, QList<SIFTDescriptorContainer> &siftDescriptorContainer)
 {
     this->imageList = imageList;
-    this->featureContainerList = featureContainerList;
+    this->siftDescriptorContainer = siftDescriptorContainer;
 }
 
-cv::Mat computeDescriptor(cv::Ptr<cv::xfeatures2d::SIFT> &sift, ImageContainer &imgContainer, FeatureContainer &featureContainer)
-{
-    cv::Mat descriptor;
-    sift->compute(imgContainer.getImage(), featureContainer.keyPointList, descriptor);
-
-    return descriptor;
-}
-
-std::vector<cv::DMatch> matchFeatures(cv::FlannBasedMatcher matcher, cv::Mat descriptor1, cv::Mat descriptor2) {
+std::vector<cv::DMatch> FLANNMatcher::matchFeatures(cv::FlannBasedMatcher matcher, cv::Mat descriptor1, cv::Mat descriptor2) {
     std::vector<cv::DMatch> matchList;
     matcher.match(descriptor1, descriptor2, matchList);
     return matchList;
 }
 
-void FLANNMatcher::StartMatching()
+std::vector<DMatchContainer> FLANNMatcher::StartMatching()
 {
 
-    if(imageList.count() != featureContainerList.count()) {
-        return;
+    if(this->imageList.count() != this->siftDescriptorContainer.count()) {
+        return std::vector<DMatchContainer>();
     }
 
-    cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create();
-
-    ImageContainer prevImgContainer;
-    FeatureContainer prevFeatureContainer;
-    ImageContainer imgContainer;
-    FeatureContainer featureContainer;
-
-    cv::Mat descriptor;
-    cv::Mat prevDescriptor;
+    ImageContainer currImage;
+    ImageContainer prevImage;
+    SIFTDescriptorContainer descContainer;
+    SIFTDescriptorContainer prevDescContainer;
 
     std::vector<cv::DMatch> matchList;
-
     cv::FlannBasedMatcher matcher;
 
-    for(int i = 0; i < imageList.count(); i++) {
+    std::vector<DMatchContainer> dmatchContainerList;
 
-        if(i == 0)
-        {
-            prevImgContainer = imageList.at(i);
-            prevFeatureContainer = featureContainerList.at(i);
+
+    // Foreach image
+    for(int i = 0; i < imageList.count(); i++) {
+        currImage = this->imageList.at(i);
+        descContainer = this->siftDescriptorContainer.at(i);
+
+        if(i == 0) {
+            prevImage = this->imageList.at(i);
+            prevDescContainer = this->siftDescriptorContainer.at(i);
             continue;
         }
 
+        matchList = this->matchFeatures(matcher, prevDescContainer.descriptor, descContainer.descriptor);
 
-        imgContainer = imageList.at(i);
-        featureContainer = featureContainerList.at(i);
 
-        descriptor = computeDescriptor(sift, imgContainer, featureContainer);
-        matchList = matchFeatures(matcher, prevDescriptor, descriptor);
-
+        // Get Max / Min Distance
         double max_dist = 0;
         double min_dist = 100;
-        for(int i = 0; i < descriptor.rows; i++)
+        for(int i = 0; i < prevDescContainer.descriptor.rows; i++)
         {
             double dist = matchList[i].distance;
-            if( dist < min_dist ) min_dist = dist;
-            if( dist > max_dist ) max_dist = dist;
+            if(dist < min_dist) min_dist = dist;
+            if(dist > max_dist) max_dist = dist;
         }
 
+        // Filter good matches
         std::vector<cv::DMatch> good_matches;
-        for( int i = 0; i < descriptor.rows; i++ )
+        for( int i = 0; i < prevDescContainer.descriptor.rows; i++ )
         {
             if( matchList[i].distance <= cv::max(2 * min_dist, 0.02))
             {
-                good_matches.push_back( matchList[i]);
+                good_matches.push_back(matchList[i]);
             }
         }
 
+        // Add good matches to container collection
+        dmatchContainerList.push_back(DMatchContainer(good_matches));
 
-        //std::cout << "Num Matches: "
-
-
-
-        // cv::xfeatures2d::SIFT::create()
-
+        prevImage = this->imageList.at(i);
+        descContainer = this->siftDescriptorContainer.at(i);
     }
+
+    return dmatchContainerList;
 }

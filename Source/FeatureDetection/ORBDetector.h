@@ -5,6 +5,8 @@
 
 #include <opencv2/features2d.hpp>
 
+#include <QList>
+
 class ORBDetector
 {
 private:

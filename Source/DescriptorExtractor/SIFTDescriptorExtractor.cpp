@@ -1,8 +1,6 @@
 #include "DescriptorExtractor/SIFTDescriptorExtractor.h"
 
-
 SIFTDescriptorExtractor::SIFTDescriptorExtractor() {}
-
 
 QList<cv::Mat> SIFTDescriptorExtractor::StartExtraction(QList<ImageContainer> &imgContainerList, QList<FeatureContainer> &featureContainerList)
 {
