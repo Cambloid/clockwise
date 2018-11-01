@@ -29,7 +29,6 @@ std::vector<DMatchContainer> FLANNMatcher::StartMatching()
 
     std::vector<DMatchContainer> dmatchContainerList;
 
-
     // Foreach image
     for(int i = 0; i < imageList.count(); i++) {
 

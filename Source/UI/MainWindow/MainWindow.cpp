@@ -30,7 +30,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 /*!
 
 */
@@ -52,9 +51,8 @@ void MainWindow::presentImage() {
     ui->lblImage->setPixmap(pixmapImg.scaled(ui->lblImage->width(), ui->lblImage->height(), Qt::KeepAspectRatio));
 }
 
-
 /*!
-Event Handlers
+    Event Handlers
 */
 void MainWindow::btnDetectFeatures_clicked() {
     std::cout << "btnDetectFeatures_clicked" << std::endl;
@@ -64,7 +62,6 @@ void MainWindow::btnDetectFeatures_clicked() {
 
     this->presentImage();
 }
-
 
 /*!
 
@@ -86,6 +83,13 @@ void MainWindow::btnMatchFeatures_clicked()
         return;
     }
 
+
+    KLTFeatureTracker tracker(this->imgContainerList, this->featureContainerList);
+
+    tracker.StartTracking();
+
+    return;
+
     SIFTDescriptorExtractor extractor;
     this->descContainerList = extractor.StartExtraction(this->imgContainerList, this->featureContainerList);
 
@@ -93,6 +97,8 @@ void MainWindow::btnMatchFeatures_clicked()
 
     FLANNMatcher matcher(this->imgContainerList, this->descContainerList);
     this->dmatchContainerList = matcher.StartMatching();
+
+
 
     std::cout << "DMatchContainer List count " << this->dmatchContainerList.size() << std::endl;
 }
@@ -116,8 +122,6 @@ void MainWindow::btnSettings_clicked() {
         this->settings = settingsWindow.getDataFromFields();
     }
 }
-
-
 
 /*!
 

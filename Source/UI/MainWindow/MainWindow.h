@@ -17,6 +17,7 @@
 
 #include "FeatureMatching/FLANNMatcher.h"
 
+#include "FeatureTracking/KLTFeatureTracker.h"
 
 #include <QMainWindow>
 #include <QDebug>

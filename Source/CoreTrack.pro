@@ -33,6 +33,7 @@ SOURCES += \
         FeatureDetection/SIFTDetector.cpp \
         FeatureDetection/DetectorManager.cpp \
         FeatureMatching/FLANNMatcher.cpp \
+        FeatureTracking/KLTFeatureTracker.cpp \
         DescriptorExtractor/SIFTDescriptorExtractor.cpp \
         Image/ImageContainer.cpp \
         Main.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
         FeatureDetection/SIFTDetector.h \
         FeatureDetection/DetectorManager.h \
         FeatureMatching/FLANNMatcher.h \
+        FeatureTracking/KLTFeatureTracker.h \
         DescriptorExtractor/SIFTDescriptorExtractor.h \
         Image/ImageConverter.hpp \
         Image/ImageUtils.hpp \
@@ -90,6 +92,12 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/buil
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_flann400
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_flann400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_tracking400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_tracking400d
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_video400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/build/install/x64/vc15/lib/ -lopencv_video400d
 
 INCLUDEPATH += $$PWD/../External/opencv/build/install/include
 DEPENDPATH += $$PWD/../External/opencv/build/install/include

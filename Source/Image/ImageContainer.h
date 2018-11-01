@@ -22,4 +22,6 @@ public:
     ~ImageContainer();
 
     cv::Mat getImage();
+
+
 };
