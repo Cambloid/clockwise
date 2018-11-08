@@ -1,5 +1,9 @@
 # CoreTrack
 
+Clone Repo:
+
+	git clone --recursive https://github.com/CoreTrackProject/coretrack.git
+
 Links:
 
 	https://docs.opencv.org/3.1.0/d5/dab/tutorial_sfm_trajectory_estimation.html
