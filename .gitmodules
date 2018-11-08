@@ -1,28 +1,21 @@
 [submodule "External/opencv"]
 	path = External/opencv
 	url = https://github.com/CoreTrackProject/opencv.git
-	
 [submodule "External/opencv_contrib"]
 	path = External/opencv_contrib
 	url = https://github.com/CoreTrackProject/opencv_contrib.git
-	
 [submodule "External/ceres-solver"]
 	path = External/ceres-solver
 	url = https://github.com/CoreTrackProject/ceres-solver.git
-	
 [submodule "External/glog"]
 	path = External/glog
 	url = https://github.com/CoreTrackProject/glog.git
-	
 [submodule "External/gflags"]
 	path = External/gflags
 	url = https://github.com/CoreTrackProject/gflags.git
-	
 [submodule "External/eigen-git-mirror"]
 	path = External/eigen-git-mirror
 	url = https://github.com/CoreTrackProject/eigen-git-mirror.git
-	
 [submodule "External/pumex"]
 	path = External/pumex
-	url = https://github.com/CoreTrackProject/pumex.git	
-	
+	url = https://github.com/CoreTrackProject/pumex.git
