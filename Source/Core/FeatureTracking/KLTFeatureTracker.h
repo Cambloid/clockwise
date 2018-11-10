@@ -11,7 +11,6 @@
 #include "opencv2/videoio.hpp"
 #include "opencv2/highgui.hpp"
 
-
 struct SingleTrackResult {
     std::vector<uchar> status;
     std::vector<float> err;

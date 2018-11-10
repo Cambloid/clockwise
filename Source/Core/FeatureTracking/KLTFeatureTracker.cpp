@@ -6,8 +6,6 @@ KLTFeatureTracker::KLTFeatureTracker(QList<ImageContainer> &imageList, QList<Fea
     this->featureContainerList = featureContainerList;
 }
 
-
-
 void KLTFeatureTracker::StartTracking()
 {
 
@@ -54,7 +52,6 @@ void KLTFeatureTracker::StartTracking()
 
 
 }
-
 
 SingleTrackResult KLTFeatureTracker::TrackImagePair(ImageContainer prevImage, FeatureContainer prevImageFeatureContainer, ImageContainer image, FeatureContainer imageFeatureContainer)
 {
