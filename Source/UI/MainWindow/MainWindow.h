@@ -1,23 +1,23 @@
 #pragma once
 
-#include "Image/ImageLoader.hpp"
-#include "Image/ImageContainer.h"
-#include "Image/ImageConverter.hpp"
-#include "Image/ImageUtils.hpp"
+#include "Core/Image/ImageLoader.hpp"
+#include "Core/Image/ImageContainer.h"
+#include "Core/Image/ImageConverter.hpp"
+#include "Core/Image/ImageUtils.hpp"
 
-#include "FeatureDetection/DetectorManager.h"
+#include "Core/FeatureDetection/DetectorManager.h"
 
 #include "UI/SettingsWindow/SettingsWindow.h"
-#include "DTO/SettingsBase.h"
-#include "DTO/SIFTDescriptorContainer.h"
-#include "DTO/DMatchContainer.h"
+#include "Core/DTO/SettingsBase.h"
+#include "Core/DTO/SIFTDescriptorContainer.h"
+#include "Core/DTO/DMatchContainer.h"
 
-#include "DescriptorExtractor/SIFTDescriptorExtractor.h"
-#include "DTO/SIFTDescriptorContainer.h"
+#include "Core/DescriptorExtractor/SIFTDescriptorExtractor.h"
+#include "Core/DTO/SIFTDescriptorContainer.h"
 
-#include "FeatureMatching/FLANNMatcher.h"
+#include "Core/FeatureMatching/FLANNMatcher.h"
 
-#include "FeatureTracking/KLTFeatureTracker.h"
+#include "Core/FeatureTracking/KLTFeatureTracker.h"
 
 #include <QMainWindow>
 #include <QDebug>

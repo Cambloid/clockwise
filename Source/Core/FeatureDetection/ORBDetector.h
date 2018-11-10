@@ -1,10 +1,9 @@
 #pragma once
 
-#include "Image/ImageContainer.h"
-#include "DTO/FeatureContainer.h"
+#include "Core/Image/ImageContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
 #include <opencv2/features2d.hpp>
-
 #include <QList>
 
 class ORBDetector

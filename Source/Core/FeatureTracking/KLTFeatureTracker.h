@@ -3,8 +3,8 @@
 #include <QList>
 #include <iostream>
 
-#include "Image/ImageContainer.h"
-#include "DTO/FeatureContainer.h"
+#include "Core/Image/ImageContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
 #include "opencv2/video/tracking.hpp"
 #include "opencv2/imgproc.hpp"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Image/ImageContainer.h"
-#include "DTO/FeatureContainer.h"
+#include "Core/Image/ImageContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
 #include <QMainWindow>
 #include <QDebug>

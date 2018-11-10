@@ -1,4 +1,4 @@
-#include "FeatureDetection/ShiTomasiDetector.h"
+#include "ShiTomasiDetector.h"
 
 ShiTomasiDetector::ShiTomasiDetector() {}
 

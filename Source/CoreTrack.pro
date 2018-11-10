@@ -24,39 +24,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+include(Core/Core.pri)
+
 SOURCES += \
         UI/MainWindow/MainWindow.cpp \
         UI/SettingsWindow/SettingsWindow.cpp \
-        FeatureDetection/CornerHarrisDetector.cpp \
-        FeatureDetection/ShiTomasiDetector.cpp \
-        FeatureDetection/ORBDetector.cpp \
-        FeatureDetection/SIFTDetector.cpp \
-        FeatureDetection/DetectorManager.cpp \
-        FeatureMatching/FLANNMatcher.cpp \
-        FeatureTracking/KLTFeatureTracker.cpp \
-        DescriptorExtractor/SIFTDescriptorExtractor.cpp \
-        Image/ImageContainer.cpp \
-        Main.cpp \
+        Main.cpp
 
 HEADERS += \
         UI/MainWindow/MainWindow.h \
-        UI/SettingsWindow/SettingsWindow.h \
-        DTO/SettingsBase.h \
-        DTO/FeatureContainer.h \
-        DTO/SIFTDescriptorContainer.h \
-        DTO/DMatchContainer.h \
-        FeatureDetection/CornerHarrisDetector.h \
-        FeatureDetection/ShiTomasiDetector.h \
-        FeatureDetection/ORBDetector.h \
-        FeatureDetection/SIFTDetector.h \
-        FeatureDetection/DetectorManager.h \
-        FeatureMatching/FLANNMatcher.h \
-        FeatureTracking/KLTFeatureTracker.h \
-        DescriptorExtractor/SIFTDescriptorExtractor.h \
-        Image/ImageConverter.hpp \
-        Image/ImageUtils.hpp \
-        Image/ImageLoader.hpp \
-        Image/ImageContainer.h
+        UI/SettingsWindow/SettingsWindow.h
 
 
 FORMS += \
@@ -99,5 +76,5 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/x64/
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/x64/vc15/lib/ -lopencv_video400
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/x64/vc15/lib/ -lopencv_video400d
 
-INCLUDEPATH += $$PWD/../External/opencv/build/install/include
-DEPENDPATH += $$PWD/../External/opencv/build/install/include
+INCLUDEPATH += $$PWD/../External/opencv/include
+DEPENDPATH += $$PWD/../External/opencv/include

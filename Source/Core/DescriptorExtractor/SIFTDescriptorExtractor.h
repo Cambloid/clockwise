@@ -3,10 +3,10 @@
 #include <vector>
 #include <QList>
 
-#include "Image/ImageContainer.h"
-#include "DTO/FeatureContainer.h"
+#include "Core/Image/ImageContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
-#include "DTO/SIFTDescriptorContainer.h"
+#include "Core/DTO/SIFTDescriptorContainer.h"
 
 #include <opencv2/core.hpp>
 #include <opencv2/opencv_modules.hpp>

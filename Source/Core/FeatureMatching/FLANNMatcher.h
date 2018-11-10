@@ -2,12 +2,12 @@
 
 #include <QList>
 
-#include "Image/ImageContainer.h"
-#include "DTO/FeatureContainer.h"
+#include "Core/Image/ImageContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
-#include "DescriptorExtractor/SIFTDescriptorExtractor.h"
-#include "DTO/SIFTDescriptorContainer.h"
-#include "DTO/DMatchContainer.h"
+#include "Core/DescriptorExtractor/SIFTDescriptorExtractor.h"
+#include "Core/DTO/SIFTDescriptorContainer.h"
+#include "Core/DTO/DMatchContainer.h"
 
 #include "opencv2/opencv_modules.hpp"
 #include "opencv2/core.hpp"

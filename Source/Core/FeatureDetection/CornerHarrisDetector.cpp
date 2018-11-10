@@ -1,4 +1,4 @@
-#include "FeatureDetection/CornerHarrisDetector.h"
+#include "CornerHarrisDetector.h"
 
 
 CornerHarrisDetector::CornerHarrisDetector() {}

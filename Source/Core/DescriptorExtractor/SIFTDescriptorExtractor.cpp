@@ -1,4 +1,4 @@
-#include "DescriptorExtractor/SIFTDescriptorExtractor.h"
+#include "SIFTDescriptorExtractor.h"
 
 SIFTDescriptorExtractor::SIFTDescriptorExtractor() {}
 
@@ -18,7 +18,7 @@ QList<SIFTDescriptorContainer> SIFTDescriptorExtractor::StartExtraction(QList<Im
         featureContainer = featureContainerList.at(i);
 
         cv::Mat descriptor;
-        sift->compute(imgContainer.getImage(), featureContainer.keyPointList, descriptor);
+        //sift->compute(imgContainer.getImage(), featureContainer.keyPointList, descriptor);
 
         descriptorList.append(SIFTDescriptorContainer(descriptor));
     }

@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "DTO/SettingsBase.h"
+#include "Core/DTO/SettingsBase.h"
 
 namespace Ui {
     class SettingsWindow;
