@@ -6,10 +6,15 @@
 #include "Core/Image/ImageContainer.h"
 #include "Core/DTO/FeatureContainer.h"
 
-#include "opencv2/video/tracking.hpp"
-#include "opencv2/imgproc.hpp"
-#include "opencv2/videoio.hpp"
-#include "opencv2/highgui.hpp"
+#include <opencv2/video/tracking.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/highgui.hpp>
+
+
+#include <opencv2/opencv.hpp>
+#include <opencv2/core/ocl.hpp>
+#include <opencv2/tracking.hpp>
 
 struct SingleTrackResult {
     std::vector<uchar> status;
@@ -29,6 +34,6 @@ public:
 
 public:
     void StartTracking();
-    SingleTrackResult TrackImagePair(ImageContainer prevImage, FeatureContainer prevImageFeatureContainer, ImageContainer image, FeatureContainer imageFeatureContainer);
+    SingleTrackResult TrackImagePair(ImageContainer &prevImage, FeatureContainer &prevImageFeatureContainer, ImageContainer &image, FeatureContainer &imageFeatureContainer);
 
 };

@@ -77,7 +77,25 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuWindows">
+    <property name="title">
+     <string>Windows</string>
+    </property>
+    <addaction name="action3D_View"/>
+    <addaction name="actionSettings"/>
+   </widget>
+   <addaction name="menuWindows"/>
   </widget>
+  <action name="action3D_View">
+   <property name="text">
+    <string>3D View</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
