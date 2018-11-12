@@ -11,7 +11,6 @@ void KLTFeatureTracker::StartTracking()
 
     /*
 
-https://docs.opencv.org/3.4/d7/d8b/tutorial_py_lucas_kanade.html
 https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
 https://docs.opencv.org/3.1.0/d5/dab/tutorial_sfm_trajectory_estimation.html
 https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65831eb88ed93323
@@ -46,11 +45,26 @@ https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65
         currImage = this->imageList.at(i);
         currFeatureContainer = this->featureContainerList.at(i);
 
+        cv::Ptr<cv::TrackerCSRT> csrtTracker = cv::TrackerCSRT::create();
+
+        // Foreach Features
+        for(int featureIdx = 0; featureIdx < prevFeatureContainer.keyPointList.size(); featureIdx++) {
+            cv::Rect2d tmpRect = cv::Rect2d(prevFeatureContainer.keyPointList.at(featureIdx).pt.x,
+                                                       prevFeatureContainer.keyPointList.at(featureIdx).pt.y,
+                                                       10,
+                                                       10);
+
+            csrtTracker->init(prevImage.getImage(), tmpRect);
+            std::cout << "Init Rect: x:" << tmpRect.x << " y:" << tmpRect.y << std::endl;
+            csrtTracker->update(currImage.getImage(), tmpRect);
+            std::cout << "Updated Rect: x:" << tmpRect.x << " y:" << tmpRect.y << std::endl;
+            std::cout << "====================================================" << std::endl;
+        }
 
         //cv::Tracker trackerInst = cv::Tracker
-        resultList.push_back(
-                    this->TrackImagePair(prevImage, prevFeatureContainer, currImage, currFeatureContainer)
-                    );
+       //resultList.push_back(
+       //           this->TrackImagePair(prevImage, prevFeatureContainer, currImage, currFeatureContainer)
+       //         );
 
         prevImage = currImage;
         prevFeatureContainer = currFeatureContainer;

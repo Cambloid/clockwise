@@ -68,7 +68,23 @@ void MainWindow::btnDetectFeatures_clicked() {
 */
 void MainWindow::btnLoadImage_clicked()
 {
-    this->imgContainerList = ImageLoader::BulkLoadImage(ImageLoader::PickImages());
+    QStringList imageList = ImageLoader::PickImages();
+
+    if(imageList.count() >  0) {
+        return;
+    }
+
+    //Check file extension
+    QFileInfo info(imageList.at(0));
+
+
+    if(info.suffix().toStdString() == "mp4") {
+        this->imgContainerList = ImageLoader::LoadVideo(imageList.at(0));
+    } else {
+        this->imgContainerList = ImageLoader::BulkLoadImage(imageList);
+    }
+
+
     ui->sldCurrentImage->setRange(0, this->imgContainerList.count() - 1);
 
     this->presentImage();

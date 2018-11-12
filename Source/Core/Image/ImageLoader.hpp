@@ -32,7 +32,27 @@ public:
     }
 
     static QStringList PickImages() {
-        return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.xpm *.jpg)");
+        return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.xpm *.jpg *.*)");
     }
+
+    static QList<ImageContainer> LoadVideo(QString filePath) {
+        if(filePath.isNull() || filePath.isEmpty()) {
+            std::cout << "Filepath is null or empty" << std::endl;
+            return QList<ImageContainer>();
+        }
+
+        cv::VideoCapture video(filePath.toStdString());
+        QList<ImageContainer> images;
+        if(video.isOpened()) {
+            cv::Mat videoFrame;
+            while(video.read(videoFrame)) {
+                images.append(videoFrame);
+            }
+        }
+        return images;
+    }
+
+
+
 
 };

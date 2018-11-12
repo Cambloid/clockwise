@@ -28,5 +28,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/x64/
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/x64/vc15/lib/ -lopencv_video400
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/x64/vc15/lib/ -lopencv_video400d
 
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../External/opencv/x64/vc15/lib/ -lopencv_videoio400
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/opencv/x64/vc15/lib/ -lopencv_videoio400d
+
 INCLUDEPATH += $$PWD/../External/opencv/include
 DEPENDPATH += $$PWD/../External/opencv/include
