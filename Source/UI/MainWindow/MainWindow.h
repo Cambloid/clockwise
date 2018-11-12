@@ -16,7 +16,6 @@
 #include "Core/DTO/SIFTDescriptorContainer.h"
 
 #include "Core/FeatureMatching/FLANNMatcher.h"
-
 #include "Core/FeatureTracking/KLTFeatureTracker.h"
 
 #include <QMainWindow>
