@@ -24,9 +24,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+include(Dependencies.pri)
+
 include(Core/Core.pri)
 include(UI/UI.pri)
-include(Dependencies.pri)
 
 SOURCES += \
         Main.cpp
