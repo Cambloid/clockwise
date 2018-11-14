@@ -10,6 +10,12 @@ void KLTFeatureTracker::StartTracking()
 {
 
     /*
+- Take Features from first Image
+- Track them through all Images
+- Return Object with Features and (x,y animation)
+
+*/
+    /*
 
 https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
 https://docs.opencv.org/3.1.0/d5/dab/tutorial_sfm_trajectory_estimation.html
@@ -50,9 +56,9 @@ https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65
         // Foreach Features
         for(int featureIdx = 0; featureIdx < prevFeatureContainer.keyPointList.size(); featureIdx++) {
             cv::Rect2d tmpRect = cv::Rect2d(prevFeatureContainer.keyPointList.at(featureIdx).pt.x,
-                                                       prevFeatureContainer.keyPointList.at(featureIdx).pt.y,
-                                                       10,
-                                                       10);
+                                            prevFeatureContainer.keyPointList.at(featureIdx).pt.y,
+                                            10,
+                                            10);
 
             csrtTracker->init(prevImage.getImage(), tmpRect);
             std::cout << "Init Rect: x:" << tmpRect.x << " y:" << tmpRect.y << std::endl;
@@ -62,9 +68,9 @@ https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65
         }
 
         //cv::Tracker trackerInst = cv::Tracker
-       //resultList.push_back(
-       //           this->TrackImagePair(prevImage, prevFeatureContainer, currImage, currFeatureContainer)
-       //         );
+        //resultList.push_back(
+        //           this->TrackImagePair(prevImage, prevFeatureContainer, currImage, currFeatureContainer)
+        //         );
 
         prevImage = currImage;
         prevFeatureContainer = currFeatureContainer;

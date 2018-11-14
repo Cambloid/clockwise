@@ -37,5 +37,6 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../External/vcpkg/insta
 
 
 
+
 INCLUDEPATH += $$PWD/../External/vcpkg/installed/x64-windows/include
 DEPENDPATH += $$PWD/../External/vcpkg/installed/x64-windows/include

@@ -70,13 +70,15 @@ void MainWindow::btnLoadImage_clicked()
 {
     QStringList imageList = ImageLoader::PickImages();
 
-    if(imageList.count() >  0) {
+    if(imageList.count() <=  0) {
         return;
     }
 
     //Check file extension
     QFileInfo info(imageList.at(0));
 
+
+    std::cout << "File suffix:"  << info.suffix().toStdString() << std::endl;
 
     if(info.suffix().toStdString() == "mp4") {
         this->imgContainerList = ImageLoader::LoadVideo(imageList.at(0));

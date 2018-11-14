@@ -18,7 +18,7 @@ struct SettingsBase {
     DetectorType detectorType;
 
     SettingsBase() {
-        this->detectorType = DetectorType::SIFT;
+        this->detectorType = DetectorType::ORB;
     }
 
     struct ShiTomasi {

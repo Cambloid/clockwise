@@ -55,7 +55,7 @@
     <item>
      <widget class="QPushButton" name="btnMatchFeatures">
       <property name="text">
-       <string>Match Features</string>
+       <string>Track Features</string>
       </property>
      </widget>
     </item>
@@ -74,7 +74,7 @@
      <x>0</x>
      <y>0</y>
      <width>667</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuWindows">

@@ -40,6 +40,5 @@ void DetectorManager::configureShiTomasi()
 
 void DetectorManager::configureORB()
 {
-    //SettingsORB *settingsORB = dynamic_cast<SettingsORB*>(&this->settingsBase);
-    //this->orb.setNumFeatures(settingsORB->getNumFeatures());
+    this->orb.setNumFeatures(this->settingsBase.orb.numFeatures);
 }
