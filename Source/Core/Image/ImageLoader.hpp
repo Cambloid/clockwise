@@ -32,7 +32,7 @@ public:
     }
 
     static QStringList PickImages() {
-        return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.xpm *.jpg *.*)");
+        return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.jpg *.mp4)");
     }
 
     static QList<ImageContainer> LoadVideo(QString filePath) {
