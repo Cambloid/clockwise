@@ -20,7 +20,7 @@ QList<FeatureContainer> SIFTDetector::StartDetection(QList<ImageContainer> &imag
         cv::Mat imageGrey;
         cv::cvtColor(tmpImage, imageGrey, cv::COLOR_BGR2GRAY);
 
-        cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create(8000);
+        cv::Ptr<cv::xfeatures2d::SIFT> sift = cv::xfeatures2d::SIFT::create(100);
 
         std::vector<cv::KeyPoint> keypointCollection;
         sift->detect(imageGrey, keypointCollection);

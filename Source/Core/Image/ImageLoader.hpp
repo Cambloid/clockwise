@@ -32,7 +32,7 @@ public:
     }
 
     static QStringList PickImages() {
-        return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.xpm *.jpg *.*)");
+        return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.jpg *.mp4)");
     }
 
     static QList<ImageContainer> LoadVideo(QString filePath) {
@@ -45,8 +45,14 @@ public:
         QList<ImageContainer> images;
         if(video.isOpened()) {
             cv::Mat videoFrame;
-            while(video.read(videoFrame)) {
-                images.append(videoFrame);
+            while(true) {
+
+                video >> videoFrame;
+
+                if (videoFrame.empty())
+                      break;
+
+                images.append(videoFrame.clone());
             }
         }
         return images;
