@@ -16,7 +16,7 @@ QList<FeatureContainer> ORBDetector::StartDetection(QList<ImageContainer> &image
 
     foreach(ImageContainer image, imageContainerList) {
         cv::Mat tmpImage = image.getImage().clone();
-        std::cout << "Working on Image " << imgIdx << " / " << numImages << std::endl;
+         qDebug() << "Working on Image " << imgIdx << " / " << numImages;
 
         cv::Ptr<cv::ORB> orbInstance = cv::ORB::create(this->getNumFeatures());
 
@@ -35,7 +35,7 @@ QList<FeatureContainer> ORBDetector::StartDetection(QList<ImageContainer> &image
         imgIdx++;
     }
 
-    std::cout <<  "Work finished" << std::endl;
+    qDebug() << "Work finished";
 
     return featureContainerList;
 }

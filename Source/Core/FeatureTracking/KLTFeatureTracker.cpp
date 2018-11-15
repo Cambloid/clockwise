@@ -9,17 +9,19 @@ KLTFeatureTracker::KLTFeatureTracker(QList<ImageContainer> &imageList, QList<Fea
 void KLTFeatureTracker::StartTracking()
 {
 
-    /*
-- Take Features from first Image
-- Track them through all Images
-- Return Object with Features and (x,y animation)
 
+/*
+    - Take Features from first Image
+    - Track them through all Images
+    - Return Object with Features and (x,y animation)
 */
+
+
     /*
 
-https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
-https://docs.opencv.org/3.1.0/d5/dab/tutorial_sfm_trajectory_estimation.html
-https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65831eb88ed93323
+        https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
+        https://docs.opencv.org/3.1.0/d5/dab/tutorial_sfm_trajectory_estimation.html
+        https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65831eb88ed93323
 
     */
 
@@ -61,10 +63,12 @@ https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65
                                             10);
 
             csrtTracker->init(prevImage.getImage(), tmpRect);
-            std::cout << "Init Rect: x:" << tmpRect.x << " y:" << tmpRect.y << std::endl;
+            qDebug() << "Init Rect: x:" << tmpRect.x << " y:" << tmpRect.y;
+
             csrtTracker->update(currImage.getImage(), tmpRect);
-            std::cout << "Updated Rect: x:" << tmpRect.x << " y:" << tmpRect.y << std::endl;
-            std::cout << "====================================================" << std::endl;
+            qDebug() << "Updated Rect: x:" << tmpRect.x << " y:" << tmpRect.y;
+            qDebug() << "====================================================";
+
         }
 
         //cv::Tracker trackerInst = cv::Tracker
@@ -81,11 +85,11 @@ https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65
     // Print results (tmp)
     for(int i = 0; i < resultList.size(); i++) {
         for(int err = 0; err < resultList.at(i).err.size(); err++) {
-            std::cout << "Resultlist idx:" << i << std::endl;
-            std::cout << "Resultlist err/status index:" << err << std::endl;
-            std::cout << "Error:"  << resultList.at(i).err.at(err) << std::endl;
-            std::cout << "Status:" << resultList.at(i).status.at(err) << std::endl;
-            std::cout << "-----------------------------------" << std::endl;
+            qDebug() << "Resultlist idx:" << i;
+            qDebug() << "Resultlist err/status index:" << err;
+            qDebug() << "Error:"  << resultList.at(i).err.at(err);
+            qDebug() << "Status:" << resultList.at(i).status.at(err);
+            qDebug() << "-----------------------------------";
         }
     }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QList>
+#include <QDebug>
 #include <iostream>
 
 #include "Core/Image/ImageContainer.h"
