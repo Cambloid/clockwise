@@ -23,10 +23,10 @@ public:
         return ImageContainer(cv::imread(filePath.toStdString(), cv::IMREAD_COLOR));
     }
 
-    static QList<ImageContainer> BulkLoadImage(QStringList filePathList) {
-        QList<ImageContainer> images;
+    static std::vector<ImageContainer> BulkLoadImage(QStringList filePathList) {
+        std::vector<ImageContainer> images;
         foreach(QString str, filePathList) {
-            images.append(ImageContainer(cv::imread(str.toStdString(), cv::IMREAD_COLOR)));
+            images.push_back(ImageContainer(cv::imread(str.toStdString(), cv::IMREAD_COLOR)));
         }
         return images;
     }
@@ -35,14 +35,14 @@ public:
         return QFileDialog::getOpenFileNames(nullptr, "Open File", "home", "Images (*.png *.jpg *.mp4)");
     }
 
-    static QList<ImageContainer> LoadVideo(QString filePath) {
+    static std::vector<ImageContainer> LoadVideo(QString filePath) {
         if(filePath.isNull() || filePath.isEmpty()) {
             std::cout << "Filepath is null or empty" << std::endl;
-            return QList<ImageContainer>();
+            return std::vector<ImageContainer>();
         }
 
         cv::VideoCapture video(filePath.toStdString());
-        QList<ImageContainer> images;
+        std::vector<ImageContainer> images;
         if(video.isOpened()) {
             cv::Mat videoFrame;
             while(true) {
@@ -52,7 +52,7 @@ public:
                 if (videoFrame.empty())
                       break;
 
-                images.append(videoFrame.clone());
+                images.push_back(videoFrame.clone());
             }
         }
         return images;

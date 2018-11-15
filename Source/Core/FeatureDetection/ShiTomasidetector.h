@@ -21,7 +21,7 @@ private:
 public:
     ShiTomasiDetector();
     ~ShiTomasiDetector();
-    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
+    std::vector<FeatureContainer> StartDetection(std::vector<ImageContainer> &imageContainerList);
 
 
     int getNumFeatures() const;

@@ -1,5 +1,5 @@
 SOURCES += \
-        Core/FeatureTracking/KLTFeatureTracker.cpp
+        Core/FeatureTracking/CSRTTracker.cpp
 
 HEADERS += \
-        Core/FeatureTracking/KLTFeatureTracker.h
+        Core/FeatureTracking/CSRTTracker.h

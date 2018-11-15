@@ -17,12 +17,12 @@ void CornerHarrisDetector::setThreshold(int threshold) {
 
 
 
-QList<FeatureContainer> CornerHarrisDetector::StartDetection(QList<ImageContainer> &imageContainerList) {
+std::vector<FeatureContainer> CornerHarrisDetector::StartDetection(std::vector<ImageContainer> &imageContainerList) {
 
-    QList<cv::Mat> newImage;
-    QList<FeatureContainer> featureContainerList;
+    std::vector<cv::Mat> newImage;
+    std::vector<FeatureContainer> featureContainerList;
 
-    int numImages = imageContainerList.count();
+    int numImages = imageContainerList.size();
     int imgIdx = 1;
 
     // Detector parameters
@@ -67,8 +67,8 @@ QList<FeatureContainer> CornerHarrisDetector::StartDetection(QList<ImageContaine
             std::cout <<  "Could not open or find the image" << std::endl ;
         }
 
-        newImage.append(tmpImage);
-        //featureContainerList.append(FeatureContainer());
+        newImage.push_back(tmpImage);
+        //featureContainerList.push_back(FeatureContainer());
         imgIdx++;
     }
 

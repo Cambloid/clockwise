@@ -14,8 +14,8 @@
 class DetectorManager
 {
 private:
-    QList<ImageContainer> imageContainerList;
-    QList<FeatureContainer> featureContainerList;
+    std::vector<ImageContainer> imageContainerList;
+    std::vector<FeatureContainer> featureContainerList;
 
     SettingsBase settingsBase;
     CornerHarrisDetector cornerHarris;
@@ -25,7 +25,7 @@ private:
 
 public:
     DetectorManager(SettingsBase &settingsData);
-    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imagecontainerList);
+    std::vector<FeatureContainer> StartDetection(std::vector<ImageContainer> &imagecontainerList);
 
 private:
     void configureCornerHarris();

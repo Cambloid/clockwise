@@ -39,7 +39,7 @@ struct SettingsBase {
     struct ORB {
         int numFeatures;
         ORB()  {
-           numFeatures = 10000;
+           numFeatures = 10;
         }
 
     } orb;

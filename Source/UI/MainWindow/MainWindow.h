@@ -16,7 +16,7 @@
 #include "Core/DTO/SIFTDescriptorContainer.h"
 
 #include "Core/FeatureMatching/FLANNMatcher.h"
-#include "Core/FeatureTracking/KLTFeatureTracker.h"
+#include "Core/FeatureTracking/CSRTTracker.h"
 
 #include <QMainWindow>
 #include <QDebug>
@@ -49,10 +49,10 @@ public:
 
 private: // Private instancevariables
     Ui::MainWindow *ui;
-    QList<ImageContainer> imgContainerList;
-    QList<FeatureContainer> featureContainerList;
+    std::vector<ImageContainer> imgContainerList;
+    std::vector<FeatureContainer> featureContainerList;
 
-    QList<SIFTDescriptorContainer> descContainerList;
+    std::vector<SIFTDescriptorContainer> descContainerList;
     std::vector<DMatchContainer> dmatchContainerList;
 
     SettingsBase settings;

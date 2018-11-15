@@ -1,6 +1,6 @@
 
 
-/*
+
 
 #include <QApplication>
 
@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-*/
 
+/*
 #include <opencv2/opencv.hpp>
 #include <opencv2/tracking.hpp>
 #include <opencv2/core/ocl.hpp>
@@ -93,6 +93,7 @@ int main(int argc, char **argv)
     imshow("Tracking", frame);
     tracker->init(frame, bbox);
 
+
     while(video.read(frame))
     {
         // Start timer
@@ -130,6 +131,7 @@ int main(int argc, char **argv)
         {
             break;
         }
-
     }
+
 }
+*/

@@ -21,5 +21,5 @@ class SIFTDescriptorExtractor
 public:
     SIFTDescriptorExtractor();
 
-    QList<SIFTDescriptorContainer> StartExtraction(QList<ImageContainer> &imgContainerList, QList<FeatureContainer> &featureContainerList);
+    std::vector<SIFTDescriptorContainer> StartExtraction(std::vector<ImageContainer> &imgContainerList, std::vector<FeatureContainer> &featureContainerList);
 };

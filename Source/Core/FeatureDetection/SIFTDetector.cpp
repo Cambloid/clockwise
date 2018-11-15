@@ -4,12 +4,12 @@ SIFTDetector::SIFTDetector() {}
 
 SIFTDetector::~SIFTDetector() {}
 
-QList<FeatureContainer> SIFTDetector::StartDetection(QList<ImageContainer> &imageContainerList)
+std::vector<FeatureContainer> SIFTDetector::StartDetection(std::vector<ImageContainer> &imageContainerList)
 {
 
-    QList<cv::Mat> newImage;
-    QList<FeatureContainer> featureContainerList;
-    int numImages = imageContainerList.count();
+    std::vector<cv::Mat> newImage;
+    std::vector<FeatureContainer> featureContainerList;
+    int numImages = imageContainerList.size();
     int imgIdx = 1;
 
     foreach(ImageContainer image, imageContainerList) {
@@ -25,8 +25,8 @@ QList<FeatureContainer> SIFTDetector::StartDetection(QList<ImageContainer> &imag
         std::vector<cv::KeyPoint> keypointCollection;
         sift->detect(imageGrey, keypointCollection);
 
-        newImage.append(tmpImage);
-        featureContainerList.append(FeatureContainer(keypointCollection));
+        newImage.push_back(tmpImage);
+        featureContainerList.push_back(FeatureContainer(keypointCollection));
         imgIdx++;
     }
     std::cout <<  "Work finished" << std::endl ;

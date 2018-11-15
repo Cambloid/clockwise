@@ -5,12 +5,12 @@ ORBDetector::ORBDetector() {}
 
 ORBDetector::~ORBDetector() {}
 
-QList<FeatureContainer> ORBDetector::StartDetection(QList<ImageContainer> &imageContainerList)
+std::vector<FeatureContainer> ORBDetector::StartDetection(std::vector<ImageContainer> &imageContainerList)
 {
 
-    QList<cv::Mat> newImage;
-    QList<FeatureContainer> featureContainerList;
-    int numImages = imageContainerList.count();
+    std::vector<cv::Mat> newImage;
+    std::vector<FeatureContainer> featureContainerList;
+    int numImages = imageContainerList.size();
     int imgIdx = 1;
 
 
@@ -30,8 +30,8 @@ QList<FeatureContainer> ORBDetector::StartDetection(QList<ImageContainer> &image
             circle(tmpImage, keyPointCollection[i].pt, 3, cv::Scalar(255, 255, 255), 2, 8, 0);
         }
 
-        newImage.append(tmpImage);
-        featureContainerList.append(FeatureContainer(keyPointCollection));
+        newImage.push_back(tmpImage);
+        featureContainerList.push_back(FeatureContainer(keyPointCollection));
         imgIdx++;
     }
 

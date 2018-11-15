@@ -21,13 +21,13 @@
 class FLANNMatcher
 {
 private:
-    QList<ImageContainer> imageList;
-    QList<SIFTDescriptorContainer> siftDescriptorContainer;
+    std::vector<ImageContainer> imageList;
+    std::vector<SIFTDescriptorContainer> siftDescriptorContainer;
 
     std::vector<cv::DMatch> matchFeatures(cv::FlannBasedMatcher matcher, cv::Mat descriptor1, cv::Mat descriptor2);
 
 public:
-    FLANNMatcher(QList<ImageContainer> &imageList, QList<SIFTDescriptorContainer> &siftDescriptorContainerList);
+    FLANNMatcher(std::vector<ImageContainer> &imageList, std::vector<SIFTDescriptorContainer> &siftDescriptorContainerList);
 
 public:
     std::vector<DMatchContainer> StartMatching();

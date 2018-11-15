@@ -5,7 +5,7 @@ DetectorManager::DetectorManager(SettingsBase &settingsBase)
     this->settingsBase = settingsBase;
 }
 
-QList<FeatureContainer> DetectorManager::StartDetection(QList<ImageContainer> &imagecontainerList)
+std::vector<FeatureContainer> DetectorManager::StartDetection(std::vector<ImageContainer> &imagecontainerList)
 {
     this->imageContainerList = imagecontainerList;
 

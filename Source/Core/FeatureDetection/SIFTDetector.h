@@ -10,6 +10,6 @@ class SIFTDetector
 public:
     SIFTDetector();
     ~SIFTDetector();
-    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
+    std::vector<FeatureContainer> StartDetection(std::vector<ImageContainer> &imageContainerList);
 
 };

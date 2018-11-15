@@ -36,10 +36,10 @@ MainWindow::~MainWindow()
 void MainWindow::presentImage() {
     int currIdx = ui->sldCurrentImage->value();
 
-    if(this->imgContainerList.count() <= 0 || this->featureContainerList.count() <= 0) {
+    if(this->imgContainerList.size() <= 0 || this->featureContainerList.size() <= 0) {
 
-        std::cout << "imgContainerList count:" << this->imgContainerList.count() << std::endl;
-        std::cout << "featureContainerList count:" << this->featureContainerList.count() << std::endl;
+        std::cout << "imgContainerList count:" << this->imgContainerList.size() << std::endl;
+        std::cout << "featureContainerList count:" << this->featureContainerList.size() << std::endl;
 
         return;
 
@@ -70,7 +70,7 @@ void MainWindow::btnLoadImage_clicked()
 {
     QStringList imageList = ImageLoader::PickImages();
 
-    if(imageList.count() <=  0) {
+    if(imageList.size() <=  0) {
         return;
     }
 
@@ -87,7 +87,7 @@ void MainWindow::btnLoadImage_clicked()
     }
 
 
-    ui->sldCurrentImage->setRange(0, this->imgContainerList.count() - 1);
+    ui->sldCurrentImage->setRange(0, this->imgContainerList.size() - 1);
 
     this->presentImage();
 }
@@ -97,12 +97,12 @@ void MainWindow::btnLoadImage_clicked()
 */
 void MainWindow::btnMatchFeatures_clicked()
 {
-    if(this->imgContainerList.count() != this->featureContainerList.count()) {
+    if(this->imgContainerList.size() != this->featureContainerList.size()) {
         return;
     }
 
 
-    KLTFeatureTracker tracker(this->imgContainerList, this->featureContainerList);
+    CSRTTracker tracker(this->imgContainerList, this->featureContainerList);
 
     tracker.StartTracking();
 

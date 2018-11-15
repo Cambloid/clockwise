@@ -4,12 +4,12 @@ ShiTomasiDetector::ShiTomasiDetector() {}
 
 ShiTomasiDetector::~ShiTomasiDetector() {}
 
-QList<FeatureContainer> ShiTomasiDetector::StartDetection(QList<ImageContainer> &imageContainerList) {
+std::vector<FeatureContainer> ShiTomasiDetector::StartDetection(std::vector<ImageContainer> &imageContainerList) {
 
-    QList<cv::Mat> newImage;
-    QList<FeatureContainer> featureContainerList;
+    std::vector<cv::Mat> newImage;
+    std::vector<FeatureContainer> featureContainerList;
 
-    int numImages = imageContainerList.count();
+    int numImages = imageContainerList.size();
     int imgIdx = 1;
 
     foreach(ImageContainer image, imageContainerList) {
@@ -33,8 +33,8 @@ QList<FeatureContainer> ShiTomasiDetector::StartDetection(QList<ImageContainer> 
             circle(tmpImage, corners[i], 3, cv::Scalar(255, 255, 255), 2, 8, 0);
         }
 
-        newImage.append(tmpImage);
-        //featureContainerList.append(corners)
+        newImage.push_back(tmpImage);
+        //featureContainerList.push_back(corners)
         imgIdx++;
     }
 

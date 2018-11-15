@@ -34,6 +34,6 @@ public: // Konstruktor
 public:
     int getThreshold();
     void setThreshold(int threshold);
-    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
+    std::vector<FeatureContainer> StartDetection(std::vector<ImageContainer> &imageContainerList);
 
 };

@@ -10,12 +10,12 @@
 class ORBDetector
 {
 private:
-    int numFeatures = 10000;
+    int numFeatures = 10;
 
 public:
     ORBDetector();
     ~ORBDetector();
-    QList<FeatureContainer> StartDetection(QList<ImageContainer> &imageContainerList);
+    std::vector<FeatureContainer> StartDetection(std::vector<ImageContainer> &imageContainerList);
 
 
     int getNumFeatures() const;
