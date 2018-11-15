@@ -24,7 +24,7 @@ struct SettingsBase {
     struct ShiTomasi {
         int numFeatures;
         ShiTomasi() {
-            this->numFeatures = 10000;
+            this->numFeatures = 1;
         }
     } shiTomasi;
 
