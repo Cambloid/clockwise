@@ -60,6 +60,7 @@ private: // Private instancevariables
 private: // Private Methods
     QStringList pickImage();
     void presentImage();
+    void manualSelectFeature();
 
 private slots: // Events
     void btnLoadImage_clicked();
@@ -67,6 +68,7 @@ private slots: // Events
     void btnMatchFeatures_clicked();
     void btnSettings_clicked();
     void sldCurrentImage_valueChanged();
+    void btnManualSelectFeature_clicked();
 
 protected:
     void resizeEvent(QResizeEvent* event) override;

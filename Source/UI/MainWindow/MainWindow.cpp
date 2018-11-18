@@ -13,12 +13,14 @@ MainWindow::MainWindow(QWidget *parent) :
     // Fix to resize MainWindow smaller
     ui->lblImage->setMinimumSize(1, 1);
 
+
     // Register Events
-    this->connect(ui->btnLoadImage,      SIGNAL(clicked()),         this, SLOT(btnLoadImage_clicked()));
-    this->connect(ui->btnDetectFeatures, SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
-    this->connect(ui->btnSettings,       SIGNAL(clicked()),         this, SLOT(btnSettings_clicked()));
-    this->connect(ui->btnMatchFeatures,  SIGNAL(clicked()),         this, SLOT(btnMatchFeatures_clicked()));
-    this->connect(ui->sldCurrentImage,   SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
+    this->connect(ui->btnLoadImage,             SIGNAL(clicked()),         this, SLOT(btnLoadImage_clicked()));
+    this->connect(ui->btnDetectFeatures,        SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
+    this->connect(ui->btnSettings,              SIGNAL(clicked()),         this, SLOT(btnSettings_clicked()));
+    this->connect(ui->btnMatchFeatures,         SIGNAL(clicked()),         this, SLOT(btnMatchFeatures_clicked()));
+    this->connect(ui->sldCurrentImage,          SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
+    this->connect(ui->btnManualSelectFeature,   SIGNAL(clicked()),         this, SLOT(btnManualSelectFeature_clicked()));
 
 }
 
@@ -49,6 +51,49 @@ void MainWindow::presentImage() {
     QPixmap pixmapImg = ImageConverter::ToQPixmap(currImage);
 
     ui->lblImage->setPixmap(pixmapImg.scaled(ui->lblImage->width(), ui->lblImage->height(), Qt::KeepAspectRatio));
+}
+
+/*!
+ *
+*/
+void MainWindow::manualSelectFeature()
+{
+    // Get current image
+
+    // Select rectangle and add this as keypoint to feature container
+
+
+
+    int currIdx = ui->sldCurrentImage->value();
+
+    if(this->imgContainerList.size() > currIdx) {
+        cv::Mat currImage = imgContainerList[currIdx].getImage();
+
+        // Define initial bounding box
+        cv::Rect2d bbox(287, 23, 86, 320);
+
+        // Uncomment the line below to select a different bounding box
+        bbox = cv::selectROI(currImage, false);
+
+
+        if(this->featureContainerList.size() > 0) {
+
+            // Set center of selected rectangle as keypoint
+            this->featureContainerList.at(0).keyPointList.at(0).pt.x = float(bbox.x + (bbox.width / 2));
+            this->featureContainerList.at(0).keyPointList.at(0).pt.y = float(bbox.y + (bbox.height / 2));
+
+            // Display bounding box.
+            //cv::rectangle(currImage, bbox, cv::Scalar( 255, 0, 0 ), 2, 1 );
+
+        } else {
+            // TODO
+        }
+
+
+
+    }
+
+
 }
 
 /*!
@@ -126,6 +171,15 @@ void MainWindow::btnMatchFeatures_clicked()
 */
 void MainWindow::sldCurrentImage_valueChanged() {
     this->presentImage();
+}
+
+
+/*!
+
+*/
+void MainWindow::btnManualSelectFeature_clicked()
+{
+    this->manualSelectFeature();
 }
 
 /*!

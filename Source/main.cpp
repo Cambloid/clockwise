@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     // vector <string> trackerTypes(types, std::end(types));
 
     // Create a tracker
-    string trackerType = trackerTypes[7];
+    string trackerType = "GOTURN";
 
     Ptr<Tracker> tracker;
 

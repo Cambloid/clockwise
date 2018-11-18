@@ -53,6 +53,13 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="btnManualSelectFeature">
+      <property name="text">
+       <string>Manual Select Feature</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="btnMatchFeatures">
       <property name="text">
        <string>Track Features</string>
@@ -74,7 +81,7 @@
      <x>0</x>
      <y>0</y>
      <width>667</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuWindows">

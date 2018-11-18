@@ -22,13 +22,17 @@ void CSRTTracker::StartTracking()
         https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
         https://docs.opencv.org/3.1.0/d5/dab/tutorial_sfm_trajectory_estimation.html
         https://docs.opencv.org/3.4/dc/d6b/group__video__track.html#ga473e4b886d0bcc6b65831eb88ed93323
-
+        http://www.votchallenge.net/
+        https://www.youtube.com/watch?v=jZoUalMMZ_0
+        https://docs.opencv.org/3.4/d5/dab/tutorial_sfm_trajectory_estimation.html
+        https://docs.opencv.org/3.4/d7/d8b/tutorial_py_lucas_kanade.html
+        https://www.docs.opencv.org/3.4.1/d3/de9/structcv_1_1TrackerCSRT_1_1Params.html
     */
 
     //this function automatically gets rid of points for which tracking fails
 
-    if(this->imageList.size() != this->featureContainerList.size()) {
-        std::cout << "List count are not equal" << std::endl;
+    if(this->imageList.size() <= 0) {
+        qInfo() << "Imagelist ist empty";
         return;
     }
 
@@ -50,6 +54,7 @@ void CSRTTracker::StartTracking()
 
         csrtTracker->init(firstImage.getImage(), featureRect);
 
+        // TODO: Check somehow that the tracker is of
         isOk = true;
         for(int i = 0; i < this->imageList.size(); i++) {
             isOk = csrtTracker->update(firstImage.getImage(), featureRect);
