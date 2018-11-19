@@ -146,10 +146,10 @@ void MainWindow::btnMatchFeatures_clicked()
         return;
     }
 
+    SettingsFeatureTracker tmpSettings;
+    CSRTTracker tracker(tmpSettings);
 
-    CSRTTracker tracker(this->imgContainerList, this->featureContainerList);
-
-    tracker.StartTracking();
+    tracker.StartTracking(this->imgContainerList, this->featureContainerList);
 
     return;
 

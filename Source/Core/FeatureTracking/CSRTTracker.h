@@ -6,6 +6,7 @@
 
 #include "Core/Image/ImageContainer.h"
 #include "Core/DTO/FeatureContainer.h"
+#include "Core/DTO/SettingsFeatureTracker.h"
 
 #include <opencv2/video/tracking.hpp>
 #include <opencv2/imgproc.hpp>
@@ -22,11 +23,11 @@ class CSRTTracker
 private:
     std::vector<ImageContainer> imageList;
     std::vector<FeatureContainer> featureContainerList;
-
-
-public:
-    CSRTTracker(std::vector<ImageContainer> &imageList, std::vector<FeatureContainer> &featureContainerList);
+    SettingsFeatureTracker settings;
 
 public:
-    void StartTracking();
+    CSRTTracker(SettingsFeatureTracker &settings);
+
+public:
+    void StartTracking(std::vector<ImageContainer> &imageList, std::vector<FeatureContainer> &featureContainerLists);
 };

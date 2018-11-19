@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-
 /*
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/tracking.hpp>
 #include <opencv2/core/ocl.hpp>
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     // vector <string> trackerTypes(types, std::end(types));
 
     // Create a tracker
-    string trackerType = "GOTURN";
+    string trackerType = "KCF";
 
     Ptr<Tracker> tracker;
 
@@ -134,4 +134,5 @@ int main(int argc, char **argv)
     }
 
 }
+
 */

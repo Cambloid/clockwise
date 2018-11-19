@@ -1,14 +1,15 @@
 #include "CSRTTracker.h"
 
-CSRTTracker::CSRTTracker(std::vector<ImageContainer> &imageList, std::vector<FeatureContainer> &featureContainerList)
+CSRTTracker::CSRTTracker(SettingsFeatureTracker &settings)
 {
-    this->imageList = imageList;
-    this->featureContainerList = featureContainerList;
+    this->settings = settings;
 }
 
-void CSRTTracker::StartTracking()
+void CSRTTracker::StartTracking(std::vector<ImageContainer> &imageList, std::vector<FeatureContainer> &featureContainerLists)
 {
 
+    this->imageList = imageList;
+    this->featureContainerList = featureContainerList;
 
     /*
     - Take Features from first Image
@@ -38,11 +39,17 @@ void CSRTTracker::StartTracking()
 
     //FeatureContainer featureContainerFromFirstImage = this->featureContainerList.first();
 
+
     FeatureContainer featuresFirstImage = this->featureContainerList.at(0);
     ImageContainer firstImage = this->imageList.at(0);
     cv::Ptr<cv::TrackerCSRT> csrtTracker = cv::TrackerCSRT::create();
     cv::Rect2d featureRect;
+
     bool isOk = true;
+
+    // int: Trackpoint index
+    // point2d: point coords
+    std::map<int, std::vector<cv::Point2d>> trackAnim;
 
     // Track each Feature from first image though all images
     for(int t = 0; t < featuresFirstImage.keyPointList.size(); t++) {
@@ -56,16 +63,21 @@ void CSRTTracker::StartTracking()
 
         // TODO: Check somehow that the tracker is of
         isOk = true;
+
+        trackAnim.insert_or_assign(t, std::vector<cv::Point2d>());
         for(int i = 0; i < this->imageList.size(); i++) {
             isOk = csrtTracker->update(firstImage.getImage(), featureRect);
             if(!isOk) {
                 break; // Track next feature
+
+            } else {
+                trackAnim.at(t).push_back(cv::Point2d(featureRect.x, featureRect.y));
             }
 
-         qDebug() << "Feature [" << t << "] -> " << "(" << featureRect.x << "/" << featureRect.y << ")";
+            qDebug() << "Feature [" << t << "] -> " << "(" << featureRect.x << "/" << featureRect.y << ")";
 
-         //cv::Mat test = this->imageList.at(i).getImage();
-         //cv::rectangle(, featureRect, cv::Scalar( 255, 0, 0 ), 2, 1 );
+            //cv::Mat test = this->imageList.at(i).getImage();
+            //cv::rectangle(, featureRect, cv::Scalar( 255, 0, 0 ), 2, 1 );
 
         }
 
