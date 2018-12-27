@@ -1,10 +1,9 @@
 SOURCES += \
-        UI/MainWindow/MainWindow.cpp
+        $${PWD}/MainWindow.cpp
 
 HEADERS += \
-        UI/MainWindow/MainWindow.h
-
+        $${PWD}/MainWindow.h
 
 FORMS += \
-        UI/MainWindow/MainWindow.ui
+        $${PWD}/MainWindow.ui
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core/Image/ImageContainer.h"
-#include "Core/DTO/FeatureContainer.h"
+#include "Source/Core/Image/ImageContainer.h"
+#include "Source/Core/DTO/FeatureContainer.h"
 
 #include <QList>
 

@@ -1,5 +1,5 @@
 SOURCES += \
-        Core/DescriptorExtractor/SIFTDescriptorExtractor.cpp
+        $${PWD}/SIFTDescriptorExtractor.cpp
 
 HEADERS += \
-        Core/DescriptorExtractor/SIFTDescriptorExtractor.h
+        $${PWD}/SIFTDescriptorExtractor.h

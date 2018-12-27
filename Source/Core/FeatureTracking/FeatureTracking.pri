@@ -1,5 +1,5 @@
 SOURCES += \
-        Core/FeatureTracking/CSRTTracker.cpp
+        $${PWD}/CSRTTracker.cpp
 
 HEADERS += \
-        Core/FeatureTracking/CSRTTracker.h
+        $${PWD}/CSRTTracker.h

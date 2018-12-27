@@ -1,5 +1,5 @@
 SOURCES += \
-        Core/FeatureMatching/FLANNMatcher.cpp
+        $${PWD}/FLANNMatcher.cpp
 
 HEADERS += \
-        Core/FeatureMatching/FLANNMatcher.h
+        $${PWD}/FLANNMatcher.h

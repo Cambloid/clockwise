@@ -1,9 +1,9 @@
 SOURCES += \
-        UI/SettingsWindow/SettingsWindow.cpp
+        $${PWD}/SettingsWindow.cpp
 
 HEADERS += \
-        UI/SettingsWindow/SettingsWindow.h
+        $${PWD}/SettingsWindow.h
 
 FORMS += \
-        UI/SettingsWindow/SettingsWindow.ui
+        $${PWD}/SettingsWindow.ui
 

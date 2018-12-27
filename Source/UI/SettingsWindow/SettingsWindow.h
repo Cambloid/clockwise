@@ -1,9 +1,8 @@
-#ifndef SETTINGSWINDOW_H
-#define SETTINGSWINDOW_H
+#pragma once
 
 #include <QDialog>
 
-#include "Core/DTO/SettingsBase.h"
+#include "Source/Core/DTO/SettingsBase.h"
 
 namespace Ui {
     class SettingsWindow;
@@ -34,5 +33,3 @@ private slots:
     void onAccept();
 
 };
-
-#endif // SETTINGSWINDOW_H

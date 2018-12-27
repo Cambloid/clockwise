@@ -4,9 +4,9 @@
 #include <QDebug>
 #include <iostream>
 
-#include "Core/Image/ImageContainer.h"
-#include "Core/DTO/FeatureContainer.h"
-#include "Core/DTO/SettingsFeatureTracker.h"
+#include "Source/Core/Image/ImageContainer.h"
+#include "Source/Core/DTO/FeatureContainer.h"
+#include "Source/Core/DTO/SettingsFeatureTracker.h"
 
 #include <opencv2/video/tracking.hpp>
 #include <opencv2/imgproc.hpp>

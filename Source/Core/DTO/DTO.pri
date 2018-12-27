@@ -1,6 +1,6 @@
 HEADERS += \
-        Core/DTO/SettingsBase.h \
-        Core/DTO/SettingsFeatureTracker.h \
-        Core/DTO/FeatureContainer.h \
-        Core/DTO/SIFTDescriptorContainer.h \
-        Core/DTO/DMatchContainer.h
+        $${PWD}/SettingsBase.h \
+        $${PWD}/SettingsFeatureTracker.h \
+        $${PWD}/FeatureContainer.h \
+        $${PWD}/SIFTDescriptorContainer.h \
+        $${PWD}/DMatchContainer.h

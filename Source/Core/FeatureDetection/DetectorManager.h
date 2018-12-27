@@ -2,14 +2,14 @@
 
 #include <QList>
 
-#include "Core/DTO/SettingsBase.h"
-#include "Core/DTO/FeatureContainer.h"
+#include "Source/Core/DTO/SettingsBase.h"
+#include "Source/Core/DTO/FeatureContainer.h"
 
-#include "Core/Image/ImageContainer.h"
-#include "Core/FeatureDetection/CornerHarrisDetector.h"
-#include "Core/FeatureDetection/ShiTomasidetector.h"
-#include "Core/FeatureDetection/ORBDetector.h"
-#include "Core/FeatureDetection/SIFTDetector.h"
+#include "Source/Core/Image/ImageContainer.h"
+#include "Source/Core/FeatureDetection/CornerHarrisDetector.h"
+#include "Source/Core/FeatureDetection/ShiTomasidetector.h"
+#include "Source/Core/FeatureDetection/ORBDetector.h"
+#include "Source/Core/FeatureDetection/SIFTDetector.h"
 
 class DetectorManager
 {

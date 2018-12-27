@@ -24,13 +24,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-include(Dependencies.pri)
+include($${PWD}/Dependencies.pri)
 
-include(Core/Core.pri)
-include(UI/UI.pri)
+include($${PWD}/Core/Core.pri)
+include($${PWD}/UI/UI.pri)
+
+
 
 SOURCES += \
-        Main.cpp
+        $${PWD}/Main.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

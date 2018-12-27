@@ -1,8 +1,8 @@
 SOURCES += \
-        Core/Image/ImageContainer.cpp
+        $${PWD}/ImageContainer.cpp
 
 HEADERS += \
-        Core/Image/ImageConverter.hpp \
-        Core/Image/ImageUtils.hpp \
-        Core/Image/ImageLoader.hpp \
-        Core/Image/ImageContainer.h
+        $${PWD}/ImageConverter.hpp \
+        $${PWD}/ImageUtils.hpp \
+        $${PWD}/ImageLoader.hpp \
+        $${PWD}/ImageContainer.h

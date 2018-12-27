@@ -1,13 +1,13 @@
 SOURCES += \
-        Core/FeatureDetection/CornerHarrisDetector.cpp \
-        Core/FeatureDetection/ShiTomasiDetector.cpp \
-        Core/FeatureDetection/ORBDetector.cpp \
-        Core/FeatureDetection/SIFTDetector.cpp \
-        Core/FeatureDetection/DetectorManager.cpp
+        $${PWD}/CornerHarrisDetector.cpp \
+        $${PWD}/ShiTomasiDetector.cpp \
+        $${PWD}/ORBDetector.cpp \
+        $${PWD}/SIFTDetector.cpp \
+        $${PWD}/DetectorManager.cpp
 
 HEADERS += \
-        Core/FeatureDetection/CornerHarrisDetector.h \
-        Core/FeatureDetection/ShiTomasiDetector.h \
-        Core/FeatureDetection/ORBDetector.h \
-        Core/FeatureDetection/SIFTDetector.h \
-        Core/FeatureDetection/DetectorManager.h
+        $${PWD}/CornerHarrisDetector.h \
+        $${PWD}/ShiTomasiDetector.h \
+        $${PWD}/ORBDetector.h \
+        $${PWD}/SIFTDetector.h \
+        $${PWD}/DetectorManager.h

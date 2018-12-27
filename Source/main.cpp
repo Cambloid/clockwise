@@ -4,7 +4,8 @@
 
 #include <QApplication>
 
-#include "UI/MainWindow/MainWindow.h"
+//#include "UI/MainWindow/MainWindow.h"
+#include "Source/UI/NodeGraph/NodeGraph.h"
 #include <iostream>
 #include <string>
 
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    MainWindow w;
+    NodeGraph w;
     w.show();
 
     return a.exec();
