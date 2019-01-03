@@ -6,6 +6,7 @@
 
 //#include "UI/MainWindow/MainWindow.h"
 #include "Source/UI/NodeGraph/NodeGraph.h"
+#include "Source/UI/VideoViewport/VideoViewport.h"
 #include <iostream>
 #include <string>
 
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    NodeGraph w;
+    VideoViewport w;
     w.show();
 
     return a.exec();
