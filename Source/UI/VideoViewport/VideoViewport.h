@@ -1,10 +1,18 @@
 #pragma once
 
 #include <QMainWindow>
-#include <QVulkanWindow>
+
+#include <QWheelEvent>
+#include <QBoxLayout>
+
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsVideoItem>
+#include <QMediaPlayer>
+
 
 namespace Ui {
-class VideoViewport;
+ class VideoViewport;
 }
 
 class VideoViewport : public QMainWindow
@@ -16,5 +24,19 @@ public:
     ~VideoViewport();
 
 private:
+    void initViewport();
+    void initEvents();
+
+
+private slots: // Events
+    void scaleVideo(int scale);
+
+
+private:
     Ui::VideoViewport *ui;
+
+    QGraphicsScene     *m_scene        = nullptr;
+    QGraphicsVideoItem *m_videoItem    = nullptr;
+    QMediaPlayer       *m_mediaPlayer  = nullptr;
+
 };
