@@ -1,3 +1,4 @@
-build-CoreTrack-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug
+build-CoreTrack*
+External/build-ZittelmenEngine*
 Source/CoreTrack.pro.user
 CoreTrack.pro.user
