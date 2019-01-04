@@ -12,8 +12,8 @@ VideoViewport::VideoViewport(QWidget *parent) : QMainWindow(parent), ui(new Ui::
 {
     ui->setupUi(this);
 
-    this->initViewport();
-    this->initEvents();
+    //this->initViewport();
+    //this->initEvents();
 
     //TODO:
     // Load file
