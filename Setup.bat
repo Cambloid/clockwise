@@ -11,6 +11,6 @@ if not exist .\External\vcpkg\bootstrap-vcpkg.bat (
 
 cd .\External\vcpkg\
 
-vcpkg install glm magnum opencv[*] --triplet x64-windows
+vcpkg install glslang glm opencv[*] --triplet x64-windows
 
 pause
