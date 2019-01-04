@@ -1,12 +1,8 @@
 SOURCES += \
-        $${PWD}/VideoViewport.cpp \
-    $$PWD/VulkanRenderer.cpp \
-    $$PWD/VulkanWindow.cpp
+        $${PWD}/VideoViewport.cpp
 
 HEADERS += \
-        $${PWD}/VideoViewport.h \
-    $$PWD/VulkanRenderer.h \
-    $$PWD/VulkanWindow.h
+        $${PWD}/VideoViewport.h
 
 FORMS += \
         $${PWD}/VideoViewport.ui
