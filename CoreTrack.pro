@@ -1,2 +1,10 @@
 include($${PWD}/Source/App.pri)
-include($${PWD}/External/ZittelmenEngine/ZittelmenEngine.pro)
+
+TEMPLATE = subdirs
+ 
+SUBDIRS = \
+        lib
+ 
+# Add ZittelmenEngine as dependency
+lib.subdir  = External/ZittelmenEngine
+
