@@ -29,24 +29,3 @@ VideoViewport::~VideoViewport()
 {
     delete ui;
 }
-
-
-void VideoViewport::initViewport()
-{
-
-}
-
-
-void VideoViewport::initEvents()
-{
-
-}
-
-
-
-
-void VideoViewport::scaleVideo(int scale)
-{
-
-
-}

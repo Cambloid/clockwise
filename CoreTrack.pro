@@ -1,15 +1,15 @@
-#include($${PWD}/Source/App.pri)
-
 TEMPLATE = subdirs
 
-CONFIG += ordered
+
 
 SUBDIRS += \
         lib \
         app
- 
+
+CONFIG += ordered
+
 # Add ZittelmenEngine as dependency
 lib.file = "$${PWD}/External/ZittelmenEngine/ZittelmenEngine.pro"
-app.file  = "$${PWD}/Source/App.pri"
+app.file = "$${PWD}/Source/App.pri"
 
 app.depends = lib

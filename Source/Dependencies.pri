@@ -1,4 +1,5 @@
 
+
 # OpenCV
 win32:CONFIG(release, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/lib/ -lopencv_core343
 else:win32:CONFIG(debug, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/debug/lib/ -lopencv_core343d
@@ -35,6 +36,16 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$${PWD}/../External/vcpkg/ins
 
 win32:CONFIG(release, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/lib/ -lopencv_tracking343
 else:win32:CONFIG(debug, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/debug/lib/ -lopencv_tracking343d
+
+# On Windows debug libraries sometimes have a _d/d or _debug suffix you can use scopes to handle
+# that. For more information see the utility_library.pro file.
+win32 {
+    CONFIG(debug, debug|release) {
+        LIBS += -L$${OUT_PWD}/../External/ZittelmenEngine/debug -lZittelmenEngine
+    } else {
+        LIBS += -L$${OUT_PWD}/../External/ZittelmenEngine/release -lZittelmenEngine
+    }
+}
 
 INCLUDEPATH += $${PWD}/../External/vcpkg/installed/x64-windows/include \
     $${PWD}/../External/ZittelmenEngine/Source
