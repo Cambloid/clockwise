@@ -4,7 +4,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
 
-#include "Source/Core/DTO/FeatureContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
 class ImageUtils {
 

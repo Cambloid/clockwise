@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Source/Core/Image/ImageContainer.h"
-#include "Source/Core/DTO/FeatureContainer.h"
+#include "Core/Image/ImageContainer.h"
+#include "Core/DTO/FeatureContainer.h"
 
 #include <opencv2/features2d.hpp>
 #include <QList>

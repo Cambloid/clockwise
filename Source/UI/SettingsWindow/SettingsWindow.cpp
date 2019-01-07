@@ -1,4 +1,4 @@
-#include "Source/UI/SettingsWindow/SettingsWindow.h"
+#include "UI/SettingsWindow/SettingsWindow.h"
 #include "ui_SettingsWindow.h"
 
 /*!

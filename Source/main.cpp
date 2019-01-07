@@ -5,8 +5,8 @@
 #include <QApplication>
 
 //#include "UI/MainWindow/MainWindow.h"
-#include "Source/UI/NodeGraph/NodeGraph.h"
-#include "Source/UI/VideoViewport/VideoViewport.h"
+#include "UI/NodeGraph/NodeGraph.h"
+#include "UI/VideoViewport/VideoViewport.h"
 #include <iostream>
 #include <string>
 

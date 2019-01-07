@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Source/Core/Image/ImageContainer.h"
+#include "Core/Image/ImageContainer.h"
 
 #include <vector>
 

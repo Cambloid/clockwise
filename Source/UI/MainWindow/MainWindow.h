@@ -1,22 +1,22 @@
 #pragma once
 
-#include "Source/Core/Image/ImageLoader.hpp"
-#include "Source/Core/Image/ImageContainer.h"
-#include "Source/Core/Image/ImageConverter.hpp"
-#include "Source/Core/Image/ImageUtils.hpp"
+#include "Core/Image/ImageLoader.hpp"
+#include "Core/Image/ImageContainer.h"
+#include "Core/Image/ImageConverter.hpp"
+#include "Core/Image/ImageUtils.hpp"
 
-#include "Source/Core/FeatureDetection/DetectorManager.h"
+#include "Core/FeatureDetection/DetectorManager.h"
 
-#include "Source/UI/SettingsWindow/SettingsWindow.h"
-#include "Source/Core/DTO/SettingsBase.h"
-#include "Source/Core/DTO/SIFTDescriptorContainer.h"
-#include "Source/Core/DTO/DMatchContainer.h"
+#include "UI/SettingsWindow/SettingsWindow.h"
+#include "Core/DTO/SettingsBase.h"
+#include "Core/DTO/SIFTDescriptorContainer.h"
+#include "Core/DTO/DMatchContainer.h"
 
-#include "Source/Core/DescriptorExtractor/SIFTDescriptorExtractor.h"
-#include "Source/Core/DTO/SIFTDescriptorContainer.h"
+#include "Core/DescriptorExtractor/SIFTDescriptorExtractor.h"
+#include "Core/DTO/SIFTDescriptorContainer.h"
 
-#include "Source/Core/FeatureMatching/FLANNMatcher.h"
-#include "Source/Core/FeatureTracking/CSRTTracker.h"
+#include "Core/FeatureMatching/FLANNMatcher.h"
+#include "Core/FeatureTracking/CSRTTracker.h"
 
 #include <QMainWindow>
 #include <QDebug>

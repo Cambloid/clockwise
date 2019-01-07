@@ -1,4 +1,4 @@
-#include "Source/UI/NodeGraph/NodeGraph.h"
+#include "UI/NodeGraph/NodeGraph.h"
 #include "ui_NodeGraph.h"
 
 NodeGraph::NodeGraph(QWidget *parent) :

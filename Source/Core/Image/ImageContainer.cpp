@@ -1,4 +1,4 @@
-#include "Source/Core/Image/ImageContainer.h"
+#include "Core/Image/ImageContainer.h"
 
 ImageContainer::ImageContainer() {
 
