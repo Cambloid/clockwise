@@ -9,7 +9,7 @@
 #include <QGraphicsView>
 #include <QGraphicsVideoItem>
 #include <QMediaPlayer>
-
+#include <QWidget>
 
 namespace Ui {
  class VideoViewport;

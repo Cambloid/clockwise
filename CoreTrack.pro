@@ -1,7 +1,9 @@
 #include($${PWD}/Source/App.pri)
 
 TEMPLATE = subdirs
- 
+
+CONFIG += ordered
+
 SUBDIRS += \
         lib \
         app

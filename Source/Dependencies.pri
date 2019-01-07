@@ -1,6 +1,4 @@
 
-
-
 # OpenCV
 win32:CONFIG(release, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/lib/ -lopencv_core343
 else:win32:CONFIG(debug, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/debug/lib/ -lopencv_core343d
@@ -38,10 +36,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$${PWD}/../External/vcpkg/ins
 win32:CONFIG(release, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/lib/ -lopencv_tracking343
 else:win32:CONFIG(debug, debug|release): LIBS += -L$${PWD}/../External/vcpkg/installed/x64-windows/debug/lib/ -lopencv_tracking343d
 
-#Magnum
+INCLUDEPATH += $${PWD}/../External/vcpkg/installed/x64-windows/include \
+    $${PWD}/../External/ZittelmenEngine/Source
 
-
-
-
-INCLUDEPATH += $${PWD}/../External/vcpkg/installed/x64-windows/include
 DEPENDPATH += $${PWD}/../External/vcpkg/installed/x64-windows/include
