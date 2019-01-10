@@ -6,13 +6,13 @@
 // Create Panning Widget with ScrollArea and QWidget
 
 
-#include <ZittelmenEngine.h>
+//#include <ZittelmenEngine.h>
 
 VideoViewport::VideoViewport(QWidget *parent) : QMainWindow(parent), ui(new Ui::VideoViewport)
 {
     ui->setupUi(this);
 
-    ZittelmenEngine engine;
+    //ZittelmenEngine engine;
 
     //QWidget *wrapper = QWidget::createWindowContainer(engine.getVulkanWindow());
 
