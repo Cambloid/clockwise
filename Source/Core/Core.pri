@@ -1,7 +1,0 @@
-include($${PWD}/FeatureDetection/FeatureDetection.pri)
-include($${PWD}/DTO/DTO.pri)
-include($${PWD}/Image/Image.pri)
-include($${PWD}/FeatureMatching/FeatureMatching.pri)
-include($${PWD}/FeatureTracking/FeatureTracking.pri)
-include($${PWD}/DescriptorExtractor/DescriptorExtractor.pri)
-include($${PWD}/Reconstruction/Reconstruction.pri)
