@@ -1,10 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
-
-#include <QWheelEvent>
-#include <QBoxLayout>
-#include <QWidget>
+#include <ZittelmenEngine.h>
 
 namespace Ui {
  class VideoViewport;
@@ -21,5 +18,6 @@ public:
 
 private:
     Ui::VideoViewport *ui;
+	ZittelmenEngine *m_ZIengine;
 
 };

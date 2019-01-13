@@ -1,31 +1,19 @@
 #include "VideoViewport.h"
 #include "ui_VideoViewport.h"
 
-
-// TODO:
-// Create Panning Widget with ScrollArea and QWidget
-
-
-//#include <ZittelmenEngine.h>
-
 VideoViewport::VideoViewport(QWidget *parent) : QMainWindow(parent), ui(new Ui::VideoViewport)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
-    //ZittelmenEngine engine;
-
-    //QWidget *wrapper = QWidget::createWindowContainer(engine.getVulkanWindow());
-
-    //this->initViewport();
-    //this->initEvents();
-
-    //TODO:
-    // Load file
-    // Display File
+	this->m_ZIengine = new ZittelmenEngine();
+	
+	QWidget *wrapper = QWidget::createWindowContainer(m_ZIengine->getVulkanWindow(), this);
+	ui->verticalLayout->addWidget(wrapper);
 
 }
 
 VideoViewport::~VideoViewport()
 {
-    delete ui;
+	delete this->m_ZIengine;
+	delete ui;
 }
