@@ -1,6 +1,6 @@
 [submodule "External/vcpkg"]
 	path = External/vcpkg
-	url = https://github.com/Microsoft/vcpkg.git
+	url = https://github.com/CoreTrackProject/vcpkg.git
 [submodule "External/ZittelmenEngine"]
 	path = External/ZittelmenEngine
 	url = https://github.com/CoreTrackProject/ZittelmenEngine.git
