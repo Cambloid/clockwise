@@ -1,5 +1,6 @@
 #include "VideoViewport.h"
 
+#include <Qt3DExtras/Qt3DExtras>
 
 //#include "ui_VideoViewport.h"
 
@@ -10,7 +11,7 @@ VideoViewport::VideoViewport(QWidget *parent) : QDockWidget(parent) //, ui(new U
 
 
 	QVBoxLayout layout;
-	QWidget *wrapper = QWidget::createWindowContainer(m_ZIengine->getVulkanWindow(), this);
+	QWidget *wrapper = QWidget::createWindowContainer(m_ZIengine->getQt3DWindow(), this);
 	layout.addWidget(wrapper);
 
 
