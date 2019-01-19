@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->connect(ui->sldCurrentImage,          SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
     this->connect(ui->btnManualSelectFeature,   SIGNAL(clicked()),         this, SLOT(btnManualSelectFeature_clicked()));
 
+	this->connect(ui->action3D_View, &QAction::triggered, this, &MainWindow::mnu3DView_clicked);
+
 }
 
 /*!
@@ -180,6 +182,16 @@ void MainWindow::sldCurrentImage_valueChanged() {
 void MainWindow::btnManualSelectFeature_clicked()
 {
     this->manualSelectFeature();
+}
+
+void MainWindow::mnu3DView_clicked()
+{
+	//std::cout << "Test" << std::endl;
+
+	VideoViewport *viewport = new VideoViewport(this);
+	//viewport->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::BottomDockWidgetArea);
+
+	this->addDockWidget(Qt::BottomDockWidgetArea, viewport);
 }
 
 /*!

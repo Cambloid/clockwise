@@ -1,13 +1,12 @@
 #pragma once
 
-#include <QMainWindow>
+
+#include <QDockWidget>
+
+#include <QVBoxLayout>
 #include <ZittelmenEngine.h>
 
-namespace Ui {
- class VideoViewport;
-}
-
-class VideoViewport : public QMainWindow
+class VideoViewport : public QDockWidget
 {
     Q_OBJECT
 
@@ -15,9 +14,7 @@ public:
     explicit VideoViewport(QWidget *parent = nullptr);
     ~VideoViewport();
 
-
 private:
-    Ui::VideoViewport *ui;
 	ZittelmenEngine *m_ZIengine;
 
 };

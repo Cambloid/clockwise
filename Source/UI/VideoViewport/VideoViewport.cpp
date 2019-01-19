@@ -1,19 +1,24 @@
 #include "VideoViewport.h"
-#include "ui_VideoViewport.h"
 
-VideoViewport::VideoViewport(QWidget *parent) : QMainWindow(parent), ui(new Ui::VideoViewport)
+
+//#include "ui_VideoViewport.h"
+
+VideoViewport::VideoViewport(QWidget *parent) : QDockWidget(parent) //, ui(new Ui::VideoViewport)
 {
-	ui->setupUi(this);
-
 	this->m_ZIengine = new ZittelmenEngine();
 	
+
+
+	QVBoxLayout layout;
 	QWidget *wrapper = QWidget::createWindowContainer(m_ZIengine->getVulkanWindow(), this);
-	ui->verticalLayout->addWidget(wrapper);
+	layout.addWidget(wrapper);
+
+
+	this->setWidget(wrapper);
 
 }
 
 VideoViewport::~VideoViewport()
 {
 	delete this->m_ZIengine;
-	delete ui;
 }

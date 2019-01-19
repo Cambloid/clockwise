@@ -8,6 +8,8 @@
 #include "Core/FeatureDetection/DetectorManager.h"
 
 #include "UI/SettingsWindow/SettingsWindow.h"
+#include "UI/VideoViewport/VideoViewport.h"
+
 #include "Core/DTO/SettingsBase.h"
 #include "Core/DTO/SIFTDescriptorContainer.h"
 #include "Core/DTO/DMatchContainer.h"
@@ -17,6 +19,7 @@
 
 #include "Core/FeatureMatching/FLANNMatcher.h"
 #include "Core/FeatureTracking/CSRTTracker.h"
+
 
 #include <QMainWindow>
 #include <QDebug>
@@ -69,6 +72,7 @@ private slots: // Events
     void btnSettings_clicked();
     void sldCurrentImage_valueChanged();
     void btnManualSelectFeature_clicked();
+	void mnu3DView_clicked();
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
