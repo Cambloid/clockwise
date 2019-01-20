@@ -1,10 +1,10 @@
-#include "VideoViewport.h"
+#include "Viewport3d.h"
 
 #include <Qt3DExtras/Qt3DExtras>
 
-//#include "ui_VideoViewport.h"
+//#include "ui_Viewport3d.h"
 
-VideoViewport::VideoViewport(QWidget *parent) : QDockWidget(parent) //, ui(new Ui::VideoViewport)
+Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent) //, ui(new Ui::Viewport3d)
 {
 	this->m_ZIengine = new ZittelmenEngine();
 	
@@ -19,7 +19,7 @@ VideoViewport::VideoViewport(QWidget *parent) : QDockWidget(parent) //, ui(new U
 
 }
 
-VideoViewport::~VideoViewport()
+Viewport3d::~Viewport3d()
 {
 	delete this->m_ZIengine;
 }

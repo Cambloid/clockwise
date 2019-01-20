@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>667</width>
-    <height>448</height>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>CoreTrack</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -39,13 +39,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnLoadImage">
-      <property name="text">
-       <string>Load image</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QPushButton" name="btnDetectFeatures">
       <property name="text">
        <string>Detect features</string>
@@ -66,13 +59,6 @@
       </property>
      </widget>
     </item>
-    <item>
-     <widget class="QPushButton" name="btnSettings">
-      <property name="text">
-       <string>Settings</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -88,9 +74,17 @@
     <property name="title">
      <string>Windows</string>
     </property>
+    <addaction name="actionFootage_viewer"/>
     <addaction name="action3D_View"/>
     <addaction name="actionSettings"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionImport"/>
+   </widget>
+   <addaction name="menuFile"/>
    <addaction name="menuWindows"/>
   </widget>
   <action name="action3D_View">
@@ -101,6 +95,16 @@
   <action name="actionSettings">
    <property name="text">
     <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionFootage_viewer">
+   <property name="text">
+    <string>Footage viewer</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Import</string>
    </property>
   </action>
  </widget>

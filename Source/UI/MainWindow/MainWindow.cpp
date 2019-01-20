@@ -15,14 +15,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     // Register Events
-    this->connect(ui->btnLoadImage,             SIGNAL(clicked()),         this, SLOT(btnLoadImage_clicked()));
     this->connect(ui->btnDetectFeatures,        SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
-    this->connect(ui->btnSettings,              SIGNAL(clicked()),         this, SLOT(btnSettings_clicked()));
+
     this->connect(ui->btnMatchFeatures,         SIGNAL(clicked()),         this, SLOT(btnMatchFeatures_clicked()));
     this->connect(ui->sldCurrentImage,          SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
     this->connect(ui->btnManualSelectFeature,   SIGNAL(clicked()),         this, SLOT(btnManualSelectFeature_clicked()));
 
+	//this->connect(ui-actionImport)
+
+	this->connect(ui->actionImport, &QAction::triggered, this, &MainWindow::mnuImport_clicked);
 	this->connect(ui->action3D_View, &QAction::triggered, this, &MainWindow::mnu3DView_clicked);
+	this->connect(ui->actionFootage_viewer, &QAction::triggered, this, &MainWindow::mnuFootage_viewer_clicked);
+	this->connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::mnuSettings_clicked);
 
 }
 
@@ -113,35 +117,6 @@ void MainWindow::btnDetectFeatures_clicked() {
 /*!
 
 */
-void MainWindow::btnLoadImage_clicked()
-{
-    QStringList imageList = ImageLoader::PickImages();
-
-    if(imageList.size() <=  0) {
-        return;
-    }
-
-    //Check file extension
-    QFileInfo info(imageList.at(0));
-
-
-    std::cout << "File suffix:"  << info.suffix().toStdString() << std::endl;
-
-    if(info.suffix().toStdString() == "mp4") {
-        this->imgContainerList = ImageLoader::LoadVideo(imageList.at(0));
-    } else {
-        this->imgContainerList = ImageLoader::BulkLoadImage(imageList);
-    }
-
-
-    ui->sldCurrentImage->setRange(0, this->imgContainerList.size() - 1);
-
-    this->presentImage();
-}
-
-/*!
-
-*/
 void MainWindow::btnMatchFeatures_clicked()
 {
     if(this->imgContainerList.size() != this->featureContainerList.size()) {
@@ -184,27 +159,61 @@ void MainWindow::btnManualSelectFeature_clicked()
     this->manualSelectFeature();
 }
 
+/*!
+
+*/
 void MainWindow::mnu3DView_clicked()
 {
-	//std::cout << "Test" << std::endl;
-
-	VideoViewport *viewport = new VideoViewport(this);
-	//viewport->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::BottomDockWidgetArea);
-
+	Viewport3d *viewport = new Viewport3d(this);
 	this->addDockWidget(Qt::BottomDockWidgetArea, viewport);
 }
 
 /*!
 
 */
-void MainWindow::btnSettings_clicked() {
+void MainWindow::mnuFootage_viewer_clicked()
+{
+	FootageViewer *viewer = new FootageViewer();
+	this->addDockWidget(Qt::BottomDockWidgetArea, viewer);
+}
 
-    SettingsWindow settingsWindow(this->settings);
-    settingsWindow.exec();
+/*!
 
-    if(settingsWindow.result() == QDialog::Accepted) {
-        this->settings = settingsWindow.getDataFromFields();
-    }
+*/
+void MainWindow::mnuSettings_clicked()
+{
+	SettingsWindow settingsWindow(this->settings);
+	settingsWindow.exec();
+
+	if (settingsWindow.result() == QDialog::Accepted) {
+		this->settings = settingsWindow.getDataFromFields();
+	}
+}
+
+void MainWindow::mnuImport_clicked()
+{
+	QStringList imageList = ImageLoader::PickImages();
+
+	if (imageList.size() <= 0) {
+		return;
+	}
+
+	//Check file extension
+	QFileInfo info(imageList.at(0));
+
+	std::cout << "File suffix:" << info.suffix().toStdString() << std::endl;
+
+	if (info.suffix().toStdString() == "mp4") {
+		this->imgContainerList = ImageLoader::LoadVideo(imageList.at(0));
+	}
+	else {
+		this->imgContainerList = ImageLoader::BulkLoadImage(imageList);
+	}
+
+
+	ui->sldCurrentImage->setRange(0, this->imgContainerList.size() - 1);
+
+	this->presentImage();
 }
 
 /*!

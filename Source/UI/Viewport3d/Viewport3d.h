@@ -6,13 +6,13 @@
 #include <QVBoxLayout>
 #include <ZittelmenEngine.h>
 
-class VideoViewport : public QDockWidget
+class Viewport3d : public QDockWidget
 {
     Q_OBJECT
 
 public:
-    explicit VideoViewport(QWidget *parent = nullptr);
-    ~VideoViewport();
+    explicit Viewport3d(QWidget *parent = nullptr);
+    ~Viewport3d();
 
 private:
 	ZittelmenEngine *m_ZIengine;

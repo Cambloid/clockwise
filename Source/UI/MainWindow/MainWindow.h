@@ -8,7 +8,8 @@
 #include "Core/FeatureDetection/DetectorManager.h"
 
 #include "UI/SettingsWindow/SettingsWindow.h"
-#include "UI/VideoViewport/VideoViewport.h"
+#include "UI/Viewport3d/Viewport3d.h"
+#include "UI/FootageViewer/FootageViewer.h"
 
 #include "Core/DTO/SettingsBase.h"
 #include "Core/DTO/SIFTDescriptorContainer.h"
@@ -66,13 +67,16 @@ private: // Private Methods
     void manualSelectFeature();
 
 private slots: // Events
-    void btnLoadImage_clicked();
     void btnDetectFeatures_clicked();
     void btnMatchFeatures_clicked();
-    void btnSettings_clicked();
+
     void sldCurrentImage_valueChanged();
     void btnManualSelectFeature_clicked();
+
 	void mnu3DView_clicked();
+	void mnuFootage_viewer_clicked();
+	void mnuSettings_clicked();
+	void mnuImport_clicked();
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
