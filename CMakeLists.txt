@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
+set (CMAKE_CXX_STANDARD 11)
 
 project(CoreTrack)
 
@@ -28,6 +29,7 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/External/ZittelmenEngine/Source
 file(GLOB_RECURSE coretrack_SRCS
     "Source/*.h"
     "Source/*.cpp"
+    "Source/*.hpp"
     "Source/*.ui"
 )
 
