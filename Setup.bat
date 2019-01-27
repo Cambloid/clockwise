@@ -13,7 +13,7 @@ if not exist .\External\vcpkg\bootstrap-vcpkg.bat (
 
 	cd .\External\vcpkg\
 	
-	vcpkg install vulkan qt5 glslang glm opencv[*] --triplet x64-windows
+	vcpkg install vulkan qt5 glslang glm opencv[*] ffmpeg[ffserver,ffplay,ffprobe,lzma,x264,opencl,nonfree,gpl] --triplet x64-windows
 	
 	cd ..\..
 )
