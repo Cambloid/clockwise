@@ -8,15 +8,17 @@ Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent) //, ui(new Ui::Vie
 {
 	this->m_ZIengine = new ZittelmenEngine();
 	
+	QWidget renderTarget(this);
+	this->m_ZIengine->setTargetRenderSurface(this);
 
 
-	QVBoxLayout layout;
-	QWidget *wrapper = QWidget::createWindowContainer(m_ZIengine->getQt3DWindow(), this);
-	layout.addWidget(wrapper);
+	//QVBoxLayout layout;
+	//QWidget *wrapper = QWidget::createWindowContainer(m_ZIengine->getQt3DWindow(), this);
+	//layout.addWidget(wrapper);
 
 
-	this->setWidget(wrapper);
-
+	this->setWidget(&renderTarget);
+	this->m_ZIengine->initVulkanRenderer();
 }
 
 Viewport3d::~Viewport3d()
