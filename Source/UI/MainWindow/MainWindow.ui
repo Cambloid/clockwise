@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>667</width>
-    <height>447</height>
+    <width>1602</width>
+    <height>1201</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,6 +30,9 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="targetDockContainer" native="true"/>
     </item>
     <item>
      <widget class="QSlider" name="sldCurrentImage">
@@ -66,7 +69,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>667</width>
+     <width>1602</width>
      <height>21</height>
     </rect>
    </property>

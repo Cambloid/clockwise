@@ -165,7 +165,12 @@ void MainWindow::btnManualSelectFeature_clicked()
 void MainWindow::mnu3DView_clicked()
 {
 	Viewport3d *viewport = new Viewport3d(this);
-	this->addDockWidget(Qt::BottomDockWidgetArea, viewport);
+	
+	this->addDockWidget(Qt::TopDockWidgetArea, viewport);
+
+
+	viewport->initVulkanRender();
+	//this->addDockWidget(Qt::TopDockWidgetArea, viewport);
 }
 
 /*!

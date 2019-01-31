@@ -18,10 +18,15 @@ Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent) //, ui(new Ui::Vie
 
 
 	this->setWidget(&renderTarget);
-	this->m_ZIengine->initVulkanRenderer();
+	
 }
 
 Viewport3d::~Viewport3d()
 {
 	delete this->m_ZIengine;
+}
+
+void Viewport3d::initVulkanRender()
+{
+	this->m_ZIengine->initVulkanRenderer();
 }

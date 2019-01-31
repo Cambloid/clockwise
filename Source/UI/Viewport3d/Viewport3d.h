@@ -14,6 +14,8 @@ public:
     explicit Viewport3d(QWidget *parent = nullptr);
     ~Viewport3d();
 
+	void initVulkanRender();
+
 private:
 	ZittelmenEngine *m_ZIengine;
 
