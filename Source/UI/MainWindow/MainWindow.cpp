@@ -119,6 +119,7 @@ void MainWindow::btnDetectFeatures_clicked() {
 */
 void MainWindow::btnMatchFeatures_clicked()
 {
+	
     if(this->imgContainerList.size() != this->featureContainerList.size()) {
         return;
     }
@@ -164,13 +165,10 @@ void MainWindow::btnManualSelectFeature_clicked()
 */
 void MainWindow::mnu3DView_clicked()
 {
-	Viewport3d *viewport = new Viewport3d(this);
-	
-	this->addDockWidget(Qt::TopDockWidgetArea, viewport);
+	this->viewport3d = new Viewport3d(this);
+	this->addDockWidget(Qt::TopDockWidgetArea, this->viewport3d);
+	this->viewport3d->initVulkanRender();
 
-
-	viewport->initVulkanRender();
-	//this->addDockWidget(Qt::TopDockWidgetArea, viewport);
 }
 
 /*!

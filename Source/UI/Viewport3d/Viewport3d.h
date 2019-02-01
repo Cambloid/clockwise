@@ -6,6 +6,8 @@
 #include <QVBoxLayout>
 #include <ZittelmenEngine.h>
 
+#include <QWidget>
+
 class Viewport3d : public QDockWidget
 {
     Q_OBJECT
@@ -16,7 +18,11 @@ public:
 
 	void initVulkanRender();
 
-private:
-	ZittelmenEngine *m_ZIengine;
+protected:
+	void paintEvent(QPaintEvent *event);
+	bool event(QEvent * event);
 
+private:
+	ZittelmenEngine *m_ZIengine = nullptr;
+	QWidget *renderTarget;
 };

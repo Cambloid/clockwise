@@ -81,4 +81,7 @@ private slots: // Events
 protected:
     void resizeEvent(QResizeEvent* event) override;
 
+private:
+	Viewport3d *viewport3d;
+
 };
