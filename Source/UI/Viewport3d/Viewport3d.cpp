@@ -21,7 +21,7 @@ void Viewport3d::initVulkanRender()
 
 void Viewport3d::paintEvent(QPaintEvent * event)
 {
-	this->m_ZIengine->renderFrame();
+	//this->m_ZIengine->renderFrame();
 }
 
 bool Viewport3d::event(QEvent* event)
@@ -29,6 +29,11 @@ bool Viewport3d::event(QEvent* event)
 	if (event->type() == QEvent::Resize) {
 		QResizeEvent *resizeEvent = static_cast<QResizeEvent*>(event);
 		this->m_ZIengine->resize(resizeEvent->size().width(), resizeEvent->size().height());
+	} else {
+		if (this->m_ZIengine != nullptr && this->m_ZIengine->initialized()) {
+			this->m_ZIengine->renderFrame();
+		}
 	}
+
 	return QDockWidget::event(event);
 }
