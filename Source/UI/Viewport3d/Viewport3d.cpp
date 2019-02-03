@@ -5,35 +5,46 @@ Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent) //, ui(new Ui::Vie
 {
 	this->renderTarget = new QWidget(this);
 	this->setWidget(this->renderTarget);
+
+	this->renderTimer = new QTimer(this);
+	connect(this->renderTimer, SIGNAL(timeout()), this, SLOT(timer_tick()));
 }
 
 Viewport3d::~Viewport3d()
 {
-	delete this->m_ZIengine;
+	this->destroyVulkanRenderer();
 }
 
 void Viewport3d::initVulkanRender()
 {
-	this->m_ZIengine = new ZittelmenEngine();
-	this->m_ZIengine->setTargetRenderSurface(this->renderTarget);
-	this->m_ZIengine->initVulkanRenderer();
+	this->ziEngine = new ZittelmenEngine();
+	this->ziEngine->setTargetRenderSurface(this->renderTarget);
+	this->ziEngine->initVulkanRenderer();
+
+	this->renderTimer->start(0);
 }
 
-void Viewport3d::paintEvent(QPaintEvent * event)
+void Viewport3d::destroyVulkanRenderer()
 {
-	//this->m_ZIengine->renderFrame();
+	this->renderTimer->stop();
+	delete this->ziEngine;
 }
 
 bool Viewport3d::event(QEvent* event)
 {
 	if (event->type() == QEvent::Resize) {
 		QResizeEvent *resizeEvent = static_cast<QResizeEvent*>(event);
-		this->m_ZIengine->resize(resizeEvent->size().width(), resizeEvent->size().height());
-	} else {
-		if (this->m_ZIengine != nullptr && this->m_ZIengine->initialized()) {
-			this->m_ZIengine->renderFrame();
-		}
+		this->ziEngine->resize(resizeEvent->size().width(), resizeEvent->size().height());
+
+	} else if(event->type() == QEvent::Close) {
+		this->destroyVulkanRenderer();
 	}
 
 	return QDockWidget::event(event);
+}
+
+
+void Viewport3d::timer_tick() {
+
+	this->ziEngine->renderFrame();
 }

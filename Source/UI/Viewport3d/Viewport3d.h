@@ -2,11 +2,11 @@
 
 
 #include <QDockWidget>
-
 #include <QVBoxLayout>
-#include <ZittelmenEngine.h>
-
 #include <QWidget>
+#include <QTimer>
+
+#include "ZittelmenEngine.h"
 
 class Viewport3d : public QDockWidget
 {
@@ -17,12 +17,17 @@ public:
     ~Viewport3d();
 
 	void initVulkanRender();
+	void destroyVulkanRenderer();
 
 protected:
-	void paintEvent(QPaintEvent *event);
 	bool event(QEvent * event);
+	
+private slots:
+	void timer_tick();
 
 private:
-	ZittelmenEngine *m_ZIengine = nullptr;
+	ZittelmenEngine *ziEngine = nullptr;
 	QWidget *renderTarget;
+	QTimer *renderTimer;
+
 };
