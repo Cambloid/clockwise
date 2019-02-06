@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <QDockWidget>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -17,17 +16,15 @@ public:
     ~Viewport3d();
 
 	void initVulkanRender();
-	void destroyVulkanRenderer();
+	void destroyRenderer();
+
+	void timer_tick();
 
 protected:
 	bool event(QEvent * event);
-	
-private slots:
-	void timer_tick();
 
 private:
-	ZittelmenEngine *ziEngine = nullptr;
+	std::unique_ptr<ZittelmenEngine> ziEngine = nullptr;
 	QWidget *renderTarget;
 	QTimer *renderTimer;
-
 };
