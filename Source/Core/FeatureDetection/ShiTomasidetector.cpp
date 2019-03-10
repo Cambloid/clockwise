@@ -9,7 +9,7 @@ std::vector<FeatureContainer> ShiTomasiDetector::StartDetection(std::vector<Imag
     std::vector<cv::Mat> newImage;
     std::vector<FeatureContainer> featureContainerList;
 
-    int numImages = imageContainerList.size();
+    uint32_t numImages = static_cast<uint32_t>(imageContainerList.size());
     int imgIdx = 1;
 
     foreach(ImageContainer image, imageContainerList) {

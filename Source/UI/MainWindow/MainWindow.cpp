@@ -214,7 +214,7 @@ void MainWindow::mnuImport_clicked()
 	}
 
 
-	ui->sldCurrentImage->setRange(0, this->imgContainerList.size() - 1);
+	ui->sldCurrentImage->setRange(0, static_cast<int>(this->imgContainerList.size()) - 1);
 
 	this->presentImage();
 }

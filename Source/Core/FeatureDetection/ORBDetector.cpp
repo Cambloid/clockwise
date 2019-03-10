@@ -10,7 +10,7 @@ std::vector<FeatureContainer> ORBDetector::StartDetection(std::vector<ImageConta
 
     std::vector<cv::Mat> newImage;
     std::vector<FeatureContainer> featureContainerList;
-    int numImages = imageContainerList.size();
+    uint32_t numImages = static_cast<uint32_t>(imageContainerList.size());
     int imgIdx = 1;
 
 
