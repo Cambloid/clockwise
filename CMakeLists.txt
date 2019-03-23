@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-set (CMAKE_CXX_STANDARD 11)
+SET(CMAKE_TOOLCHAIN_FILE "D:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+#set (CMAKE_CXX_STANDARD 11)
 
 project(CoreTrack)
 
@@ -22,6 +24,7 @@ find_package(OpenCV REQUIRED)
 
 
 add_subdirectory(External/ZittelmenEngine)
+add_subdirectory(External/nodeeditor)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Source")
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/External/ZittelmenEngine/Source")
@@ -42,5 +45,6 @@ target_link_libraries(CoreTrack
     Qt5::Widgets
     Qt5::WinMain
     ZittelmenEngine
+	NodeEditor
 )
 
