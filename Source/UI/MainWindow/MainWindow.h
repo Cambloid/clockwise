@@ -10,6 +10,7 @@
 #include "UI/SettingsWindow/SettingsWindow.h"
 #include "UI/Viewport3d/Viewport3d.h"
 #include "UI/FootageViewer/FootageViewer.h"
+#include "UI/NodeGraph/NodeGraph.h"
 
 #include "Core/DTO/SettingsBase.h"
 #include "Core/DTO/SIFTDescriptorContainer.h"
@@ -73,6 +74,7 @@ private slots: // Events
     void sldCurrentImage_valueChanged();
     void btnManualSelectFeature_clicked();
 
+	void mnuNodeEditor_clicked();
 	void mnu3DView_clicked();
 	void mnuFootage_viewer_clicked();
 	void mnuSettings_clicked();
@@ -82,6 +84,10 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
 private:
-	Viewport3d *viewport3d;
+	std::shared_ptr<Viewport3d> viewport3d;
+	std::shared_ptr<FootageViewer> footageViewer;
+	std::shared_ptr<NodeGraph> nodeGraph;
+	
+	//Viewport3d *viewport3d;
 
 };

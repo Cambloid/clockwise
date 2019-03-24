@@ -45,6 +45,6 @@ target_link_libraries(CoreTrack
     Qt5::Widgets
     Qt5::WinMain
     ZittelmenEngine
-	NodeEditor
+    NodeEditor
 )
 

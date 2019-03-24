@@ -16,13 +16,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Register Events
     this->connect(ui->btnDetectFeatures,        SIGNAL(clicked()),         this, SLOT(btnDetectFeatures_clicked()));
-
     this->connect(ui->btnMatchFeatures,         SIGNAL(clicked()),         this, SLOT(btnMatchFeatures_clicked()));
     this->connect(ui->sldCurrentImage,          SIGNAL(valueChanged(int)), this, SLOT(sldCurrentImage_valueChanged()));
     this->connect(ui->btnManualSelectFeature,   SIGNAL(clicked()),         this, SLOT(btnManualSelectFeature_clicked()));
 
 	//this->connect(ui-actionImport)
 
+	this->connect(ui->actionNode_Editor, &QAction::triggered, this, &MainWindow::mnuNodeEditor_clicked);
 	this->connect(ui->actionImport, &QAction::triggered, this, &MainWindow::mnuImport_clicked);
 	this->connect(ui->action3D_View, &QAction::triggered, this, &MainWindow::mnu3DView_clicked);
 	this->connect(ui->actionFootage_viewer, &QAction::triggered, this, &MainWindow::mnuFootage_viewer_clicked);
@@ -160,15 +160,21 @@ void MainWindow::btnManualSelectFeature_clicked()
     this->manualSelectFeature();
 }
 
+void MainWindow::mnuNodeEditor_clicked()
+{
+	this->nodeGraph = std::make_shared<NodeGraph>(this);
+	this->addDockWidget(Qt::TopDockWidgetArea, this->nodeGraph.get());
+	//this->viewport3d->initVulkanRender();
+}
+
 /*!
 
 */
 void MainWindow::mnu3DView_clicked()
 {
-	this->viewport3d = new Viewport3d(this);
-	this->addDockWidget(Qt::TopDockWidgetArea, this->viewport3d);
+	this->viewport3d = std::make_shared<Viewport3d>(this);
+	this->addDockWidget(Qt::TopDockWidgetArea, this->viewport3d.get());
 	this->viewport3d->initVulkanRender();
-
 }
 
 /*!
@@ -176,8 +182,8 @@ void MainWindow::mnu3DView_clicked()
 */
 void MainWindow::mnuFootage_viewer_clicked()
 {
-	FootageViewer *viewer = new FootageViewer();
-	this->addDockWidget(Qt::BottomDockWidgetArea, viewer);
+	this->footageViewer = std::make_shared<FootageViewer>(this);
+	this->addDockWidget(Qt::BottomDockWidgetArea, this->footageViewer.get());
 }
 
 /*!
@@ -193,6 +199,9 @@ void MainWindow::mnuSettings_clicked()
 	}
 }
 
+/*!
+
+*/
 void MainWindow::mnuImport_clicked()
 {
 	QStringList imageList = ImageLoader::PickImages();

@@ -70,13 +70,14 @@
      <x>0</x>
      <y>0</y>
      <width>1602</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuWindows">
     <property name="title">
      <string>Windows</string>
     </property>
+    <addaction name="actionNode_Editor"/>
     <addaction name="actionFootage_viewer"/>
     <addaction name="action3D_View"/>
     <addaction name="actionSettings"/>
@@ -108,6 +109,11 @@
   <action name="actionImport">
    <property name="text">
     <string>Import</string>
+   </property>
+  </action>
+  <action name="actionNode_Editor">
+   <property name="text">
+    <string>Node Editor</string>
    </property>
   </action>
  </widget>
