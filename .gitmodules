@@ -1,6 +1,3 @@
 [submodule "External/ZittelmenEngine"]
 	path = External/ZittelmenEngine
 	url = https://github.com/CoreTrackProject/ZittelmenEngine.git
-[submodule "External/NodeEditor"]
-	path = External/NodeEditor
-	url = https://github.com/CoreTrackProject/nodeeditor.git
