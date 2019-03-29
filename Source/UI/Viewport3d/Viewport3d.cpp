@@ -1,8 +1,7 @@
 #include "Viewport3d.h"
 #include <Qt3DExtras/Qt3DExtras>
 
-Viewport3d::Viewport3d(QWidget *parent) : 
-	QDockWidget(parent)
+Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent)
 {
 	this->renderTarget = new QWidget(this);
 	this->setWidget(this->renderTarget);
@@ -39,7 +38,6 @@ void Viewport3d::timer_tick()
 
 bool Viewport3d::event(QEvent* event)
 {
-
 	if (event->type() == QEvent::Resize) {
 		QResizeEvent *resizeEvent = static_cast<QResizeEvent*>(event);
 		this->ziEngine->resize(resizeEvent->size().width(), resizeEvent->size().height());
