@@ -13,6 +13,12 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+	AllocConsole();
+	freopen("conin$", "r", stdin);
+	freopen("conout$", "w", stdout);
+	freopen("conout$", "w", stderr);
+	printf("Debugging Window:\n");
+
     MainWindow w;
     w.show();
 
