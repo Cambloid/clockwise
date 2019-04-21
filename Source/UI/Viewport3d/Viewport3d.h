@@ -4,8 +4,12 @@
 #include <QVBoxLayout>
 #include <QWidget>
 #include <QTimer>
+#include <QResizeEvent>
 
-#include "ZittelmenEngine.h"
+#include <memory>
+
+#include "API/ZiEngine.h"
+#include "API/ZiScene.h"
 
 class Viewport3d : public QDockWidget
 {
@@ -24,7 +28,7 @@ protected:
 	bool event(QEvent * event);
 
 private:
-	std::unique_ptr<ZittelmenEngine> ziEngine = nullptr;
+	std::unique_ptr<ZiEngine> ziEngine = nullptr;
 	QWidget *renderTarget;
 	QTimer *renderTimer;
 };

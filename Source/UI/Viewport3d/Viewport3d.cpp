@@ -1,15 +1,12 @@
 #include "Viewport3d.h"
-#include <Qt3DExtras/Qt3DExtras>
 
 Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent)
 {
 	this->renderTarget = new QWidget(this);
 	this->setWidget(this->renderTarget);
-
 	this->renderTimer = new QTimer(this);
 	
 	QObject::connect(this->renderTimer, &QTimer::timeout, this, &Viewport3d::timer_tick);
-
 }
 
 Viewport3d::~Viewport3d()
@@ -19,9 +16,24 @@ Viewport3d::~Viewport3d()
 
 void Viewport3d::initVulkanRender()
 {
-	this->ziEngine = std::make_unique<ZittelmenEngine>();
-	this->ziEngine->setTargetRenderSurface(this->renderTarget);
-	this->ziEngine->initialize();
+
+
+	{
+		this->ziEngine = std::make_unique<ZiEngine>();
+		this->ziEngine->SetTargetRenderSurface(this->renderTarget);
+		std::shared_ptr<ZiScene> scene = std::make_shared<ZiScene>();
+		std::shared_ptr<ZiMesh> simpleMesh = std::make_shared<ZiMesh>(
+			ZiMesh::GetQuadVertexCollection(),
+			ZiMesh::GetQuadVertexIndexCollection(),
+			ZiTexture("D:/coretrack_devel/texture.jpg")
+			);
+		scene->AddMesh(simpleMesh);
+		this->ziEngine->SetScene(scene);
+
+
+		this->ziEngine->Initialize();
+	}
+
 
 	this->renderTimer->start(0); 
 }
@@ -33,17 +45,21 @@ void Viewport3d::destroyRenderer()
 
 void Viewport3d::timer_tick()
 {
-	this->ziEngine->renderFrame();
+	this->ziEngine->RenderFrame();
 }
 
 bool Viewport3d::event(QEvent* event)
 {
 	if (event->type() == QEvent::Resize) {
 		QResizeEvent *resizeEvent = static_cast<QResizeEvent*>(event);
-		this->ziEngine->resize(resizeEvent->size().width(), resizeEvent->size().height());
+
+		this->ziEngine->Resize(
+			resizeEvent->size().width(), 
+			resizeEvent->size().height()
+		);
 
 	} else if (event->type() == QEvent::Close) {
-		this->ziEngine->destroy();
+		this->ziEngine->Destroy();
 	}
 
 	return QDockWidget::event(event);
