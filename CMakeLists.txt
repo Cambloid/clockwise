@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-SET(CMAKE_TOOLCHAIN_FILE "D:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+#SET(CMAKE_TOOLCHAIN_FILE "D:/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 #set (CMAKE_CXX_STANDARD 11)
 
