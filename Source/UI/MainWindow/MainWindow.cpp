@@ -173,7 +173,11 @@ void MainWindow::mnuNodeEditor_clicked()
 void MainWindow::mnu3DView_clicked()
 {
 	this->viewport3d = std::make_shared<Viewport3d>(this);
-	this->addDockWidget(Qt::TopDockWidgetArea, this->viewport3d.get());
+	this->addDockWidget(Qt::RightDockWidgetArea, this->viewport3d.get());
+
+	this->viewport3d->setFloating(true);
+	this->viewport3d->resize(1280, 720);
+
 	this->viewport3d->initVulkanRender();
 }
 

@@ -2,6 +2,7 @@
 
 Viewport3d::Viewport3d(QWidget *parent) : QDockWidget(parent)
 {
+	
 	this->renderTarget = new QWidget(this);
 	this->setWidget(this->renderTarget);
 	this->renderTimer = new QTimer(this);
@@ -22,11 +23,12 @@ void Viewport3d::initVulkanRender()
 		this->ziEngine = std::make_unique<ZiEngine>();
 		this->ziEngine->SetTargetRenderSurface(this->renderTarget);
 		std::shared_ptr<ZiScene> scene = std::make_shared<ZiScene>();
-		std::shared_ptr<ZiMesh> simpleMesh = std::make_shared<ZiMesh>(
-			ZiMesh::GetQuadVertexCollection(),
-			ZiMesh::GetQuadVertexIndexCollection(),
-			ZiTexture("D:/coretrack_devel/texture.jpg")
-			);
+
+		std::shared_ptr<ZiMesh> simpleMesh = ZiMesh::LoadOBJ(
+					"D:/coretrack_devel/chalet.obj",
+					"D:/coretrack_devel/chalet.jpg"
+				);
+
 		scene->AddMesh(simpleMesh);
 		this->ziEngine->SetScene(scene);
 
