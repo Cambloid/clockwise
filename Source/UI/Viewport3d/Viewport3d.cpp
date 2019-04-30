@@ -18,21 +18,19 @@ Viewport3d::~Viewport3d()
 void Viewport3d::initVulkanRender()
 {
 
-
 	{
+
 		this->ziEngine = std::make_unique<ZiEngine>();
 		this->ziEngine->SetTargetRenderSurface(this->renderTarget);
-		std::shared_ptr<ZiScene> scene = std::make_shared<ZiScene>();
 
+		std::shared_ptr<ZiScene> scene     = std::make_shared<ZiScene>();
 		std::shared_ptr<ZiMesh> simpleMesh = ZiMesh::LoadOBJ(
 					"D:/coretrack_devel/chalet.obj",
 					"D:/coretrack_devel/chalet.jpg"
 				);
+		scene->AddEntity(simpleMesh);
 
-		scene->AddMesh(simpleMesh);
 		this->ziEngine->SetScene(scene);
-
-
 		this->ziEngine->Initialize();
 	}
 
